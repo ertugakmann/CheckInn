@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CheckInn.Model
 {
-    internal class StaffRepository
+    internal class Cleaning
     {
     }
 }

@@ -52,13 +52,13 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\BookingRepository.cs" />
-    <Compile Include="Model\CleaningRepository.cs" />
-    <Compile Include="Model\CustomerRepository.cs" />
-    <Compile Include="Model\PaymentRepository.cs" />
-    <Compile Include="Model\RoomRepository.cs" />
-    <Compile Include="Model\ServiceRepository.cs" />
-    <Compile Include="Model\StaffRepository.cs" />
+    <Compile Include="Model\Booking.cs" />
+    <Compile Include="Model\Cleaning.cs" />
+    <Compile Include="Model\Customer.cs" />
+    <Compile Include="Model\Payment.cs" />
+    <Compile Include="Model\Room.cs" />
+    <Compile Include="Model\Service.cs" />
+    <Compile Include="Model\Staff.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

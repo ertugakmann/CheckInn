@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CheckInn.Model
 {
-    internal class CleaningRepository
+    internal class Room
     {
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CheckInn.Forms;
+using CheckInn.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,10 +14,14 @@ namespace CheckInn
 {
     public partial class Form1 : Form
     {
+        StaffRepository staffRepository = new StaffRepository();
+       
+
         public Form1()
         {
             InitializeComponent();
         }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -34,6 +40,16 @@ namespace CheckInn
             {
                 e.Handled = true; // Stop the key from being entered
             }
+        }
+
+        // Sign in by Staff PIN
+        private void btnSignIn_Click(object sender, EventArgs e)
+        {
+            string staffPIN = txtStaffPIN.Text;
+            var staffDetails = staffRepository.getStaffDetails(staffPIN);
+
+            DashboardForm dashboardForm = new DashboardForm(staffDetails);
+            dashboardForm.Show();
         }
     }
 }

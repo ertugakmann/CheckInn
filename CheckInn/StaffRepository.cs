@@ -11,19 +11,19 @@ namespace CheckInn
     internal class StaffRepository
     {
 
-        string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0; Data Source = " + Environment.CurrentDirectory + @"\sLatesDB.accdb";
+        string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0; Data Source = " + Environment.CurrentDirectory + @"\CheckInnDatabase.accdb";
 
-        public Staff getStaffDetails(string staffID)
+        public Staff getStaffDetails(int staffPIN)
         {
             // Define value to store staff
             Staff staff = null;
-            
-            string sql = "SELECT * FROM tblStaff WHERE staffID = ?";
+
+            string sql = "SELECT * FROM tblStaff WHERE StaffPIN = ?";
             using (OleDbConnection conn = new OleDbConnection(connectionString))
             using (OleDbCommand cmd = new OleDbCommand(sql, conn))
             {
                 conn.Open();
-                cmd.Parameters.AddWithValue("@staffID", staffID); // add the parameter value
+                cmd.Parameters.AddWithValue("@StaffPIN", staffPIN); // add the parameter value
 
                 using (OleDbDataReader reader = cmd.ExecuteReader())
                 {

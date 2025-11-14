@@ -16,6 +16,15 @@ namespace CheckInn
     {
         StaffRepository staffRepository = new StaffRepository();
        
+        public void SignIn()
+        {
+            int staffPIN = Convert.ToInt32(txtStaffPIN.Text);
+            var staffDetails = staffRepository.getStaffDetails(staffPIN);
+
+            DashboardForm dashboardForm = new DashboardForm(staffDetails);
+            dashboardForm.Show();
+
+        }
 
         public Form1()
         {
@@ -45,11 +54,8 @@ namespace CheckInn
         // Sign in by Staff PIN
         private void btnSignIn_Click(object sender, EventArgs e)
         {
-            string staffPIN = txtStaffPIN.Text;
-            var staffDetails = staffRepository.getStaffDetails(staffPIN);
-
-            DashboardForm dashboardForm = new DashboardForm(staffDetails);
-            dashboardForm.Show();
+            // Sign In Function
+            SignIn();
         }
     }
 }

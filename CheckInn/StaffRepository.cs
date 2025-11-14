@@ -45,7 +45,34 @@ namespace CheckInn
             return staff;
         }
 
+        public StaffRole getStaffRole(int roleID)
+        {
+            // Define value to store staff
+            StaffRole staffRole = null;
 
+            string sql = "SELECT * FROM tblStaffRoles WHERE RoleID = ?";
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@RoleID", roleID); // add the parameter value
+
+                using (OleDbDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        staffRole = new StaffRole
+                        {
+                            RoleID = reader.GetInt32(0), // first column
+                            RoleName = reader.GetString(1), // second column
+                            RoleDesc = reader.GetString(2), // third column
+                           
+                        };
+                    }
+                }
+            }
+            return staffRole;
+        }
     }
        
 }

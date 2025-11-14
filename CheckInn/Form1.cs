@@ -19,10 +19,24 @@ namespace CheckInn
         public void SignIn()
         {
             int staffPIN = Convert.ToInt32(txtStaffPIN.Text);
-            var staffDetails = staffRepository.getStaffDetails(staffPIN);
 
-            DashboardForm dashboardForm = new DashboardForm(staffDetails);
-            dashboardForm.Show();
+            var staffDetails = staffRepository.getStaffDetails(staffPIN);
+            var staffRole = staffRepository.getStaffRole(staffDetails.RoleID);
+
+            switch (staffRole.RoleName)
+            {
+                case "Receptionist":
+                    ReceptionistForm receptionistForm = new ReceptionistForm(staffDetails, staffRole);
+                    receptionistForm.Show();
+                    break;
+
+                // Add more cases for different roles
+
+                default: 
+                    break;
+            }
+
+            
 
         }
 

@@ -25,16 +25,45 @@ namespace CheckInn
                     {
                         Room student = new Room
                         {
-                            RoomID = reader.GetInt32(0), // the first column is StudentID
-                            RoomType = reader.GetString(1), // the second column is FirstName
-                            PricePerNight = reader.GetFloat(2), // the third column is LastName
-                            Status = reader.GetString(3) // the fourth column is StudentDOB
+                            RoomID = Convert.ToInt32(reader["RoomID"]),
+                            RoomType = reader["RoomType"].ToString(),
+                            PricePerNight = Convert.ToSingle(reader["PricePerNight"]),
+                            Status = reader["Status"].ToString()
                         };
+
                         rooms.Add(student);
                     }
                 }
             }
             return rooms;
+        }
+
+        public Room GetSelectedRoom(int roomNumber)
+        {
+            Room room = null;
+            string sql = "SELECT * FROM tblRoom WHERE RoomID = ?"; // ? is a placeholder for parameters in OleDb
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@RoomID", roomNumber); // add the parameter value
+
+                using (OleDbDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        room = new Room
+                        {
+                            RoomID = reader.GetInt32(0), // the first column is StudentID
+                            RoomType = reader.GetString(1), // the second column is FirstName
+                            PricePerNight = reader.GetInt32(2), // the third column is LastName
+                            Status = reader.GetString(3) // the fourth column is StudentDOB
+                        };
+                    }
+                }
+            }
+
+            return room;
         }
     }
 }

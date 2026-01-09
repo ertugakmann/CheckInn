@@ -29,23 +29,24 @@ namespace CheckInn.Forms
         {
             flwRooms.Controls.Clear();
 
-            
-            // there is a problem with the datatable
-            DataTable rooms = roomRepository.getAllRooms();
+            List<Room> rooms = roomRepository.getAllRooms();
 
-            foreach (DataRow row in rooms.Rows)
+            foreach (var room in rooms)
             {
-                string number = row["RoomNumber"].ToString();
-                bool busy = (bool)row["Busy"];
+                string number = room.RoomID.ToString();
+                string status = room.Status;  
 
-                RoomCard card = new RoomCard();
-                card.SetRoom(number, busy);
+                RoomCard card = new RoomCard(); 
+                card.SetRoom(number, status);
                 card.Margin = new Padding(10);
 
-                // OPTIONAL: click event
                 card.Click += (s, e) =>
                 {
+
+                    // I left here, form does not get opened
                     MessageBox.Show("Clicked room " + number);
+                    RoomForm roomForm = new RoomForm(Convert.ToInt32(number));
+                    roomForm.Show();
                 };
 
                 flwRooms.Controls.Add(card);
@@ -66,6 +67,9 @@ namespace CheckInn.Forms
 
             // Set the dynamic text
             lblRole.Text = staffRole.RoleName;
+
+            // Load Rooms
+            LoadRooms();
         }
 
        

@@ -35,9 +35,6 @@ namespace CheckInn
                 default: 
                     break;
             }
-
-            
-
         }
 
         public Form1()
@@ -49,11 +46,6 @@ namespace CheckInn
         private void Form1_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)

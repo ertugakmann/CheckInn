@@ -17,19 +17,24 @@ namespace CheckInn
             InitializeComponent();
         }
 
-        public void SetRoom(string roomNumber, bool isBusy)
+        public void SetRoom(string roomNumber, string status)
         {
-            lblRoomNumber.Text = "Room " + roomNumber;
+            lblRoomNumber.Text = roomNumber;
 
-            if (isBusy)
+            if (status == "Available")
             {
-                lblStatus.Text = "Busy";
+                lblStatus.Text = "Available";
+                lblStatus.ForeColor = Color.Green;
+            }
+            else if(status == "Occupied")
+            {
+                lblStatus.Text = "Occupied";
                 lblStatus.ForeColor = Color.Red;
             }
             else
             {
-                lblStatus.Text = "Available";
-                lblStatus.ForeColor = Color.Green;
+                lblStatus.Text = "Maintenance";
+                lblStatus.ForeColor = Color.Blue;
             }
         }
     }

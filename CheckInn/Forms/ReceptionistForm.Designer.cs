@@ -97,14 +97,14 @@
             this.flwRooms.AutoScroll = true;
             this.flwRooms.Location = new System.Drawing.Point(676, 32);
             this.flwRooms.Name = "flwRooms";
-            this.flwRooms.Size = new System.Drawing.Size(652, 584);
+            this.flwRooms.Size = new System.Drawing.Size(1132, 735);
             this.flwRooms.TabIndex = 25;
             // 
             // ReceptionistForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 696);
+            this.ClientSize = new System.Drawing.Size(1820, 779);
             this.Controls.Add(this.flwRooms);
             this.Controls.Add(this.lblRole);
             this.Controls.Add(this.lblStaffName);

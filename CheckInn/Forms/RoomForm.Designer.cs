@@ -32,6 +32,21 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblRoomNumber = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.lblFormTitle = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtAddress = new System.Windows.Forms.RichTextBox();
+            this.dateDOB = new System.Windows.Forms.DateTimePicker();
+            this.txtPhoneNumber = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.btnSetCustomer = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblStaffName
@@ -78,11 +93,153 @@
             this.lblRoomNumber.TabIndex = 29;
             this.lblRoomNumber.Text = "Room";
             // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.BackColor = System.Drawing.Color.Transparent;
+            this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.ForeColor = System.Drawing.Color.Navy;
+            this.lblStatus.Location = new System.Drawing.Point(238, 145);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(53, 25);
+            this.lblStatus.TabIndex = 30;
+            this.lblStatus.Text = "Busy";
+            // 
+            // lblFormTitle
+            // 
+            this.lblFormTitle.AutoSize = true;
+            this.lblFormTitle.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFormTitle.ForeColor = System.Drawing.Color.Navy;
+            this.lblFormTitle.Location = new System.Drawing.Point(1007, 42);
+            this.lblFormTitle.Name = "lblFormTitle";
+            this.lblFormTitle.Size = new System.Drawing.Size(174, 45);
+            this.lblFormTitle.TabIndex = 31;
+            this.lblFormTitle.Text = "Form Title";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.Navy;
+            this.label2.Location = new System.Drawing.Point(969, 129);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(212, 32);
+            this.label2.TabIndex = 32;
+            this.label2.Text = "Customer Name :";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.Navy;
+            this.label4.Location = new System.Drawing.Point(969, 189);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(210, 32);
+            this.label4.TabIndex = 33;
+            this.label4.Text = "Customer DOB   :";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.Color.Navy;
+            this.label5.Location = new System.Drawing.Point(969, 243);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(189, 32);
+            this.label5.TabIndex = 34;
+            this.label5.Text = "Email Address :";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.label6.ForeColor = System.Drawing.Color.Navy;
+            this.label6.Location = new System.Drawing.Point(969, 302);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(201, 32);
+            this.label6.TabIndex = 35;
+            this.label6.Text = "Phone Number :";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.label7.ForeColor = System.Drawing.Color.Navy;
+            this.label7.Location = new System.Drawing.Point(969, 359);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(237, 32);
+            this.label7.TabIndex = 36;
+            this.label7.Text = "Customer Address :";
+            // 
+            // fileSystemWatcher1
+            // 
+            this.fileSystemWatcher1.EnableRaisingEvents = true;
+            this.fileSystemWatcher1.SynchronizingObject = this;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(1212, 255);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(200, 20);
+            this.txtEmail.TabIndex = 37;
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.Location = new System.Drawing.Point(1212, 371);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(200, 48);
+            this.txtAddress.TabIndex = 38;
+            this.txtAddress.Text = "";
+            // 
+            // dateDOB
+            // 
+            this.dateDOB.Location = new System.Drawing.Point(1212, 201);
+            this.dateDOB.Name = "dateDOB";
+            this.dateDOB.Size = new System.Drawing.Size(200, 20);
+            this.dateDOB.TabIndex = 39;
+            // 
+            // txtPhoneNumber
+            // 
+            this.txtPhoneNumber.Location = new System.Drawing.Point(1212, 314);
+            this.txtPhoneNumber.Name = "txtPhoneNumber";
+            this.txtPhoneNumber.Size = new System.Drawing.Size(200, 20);
+            this.txtPhoneNumber.TabIndex = 40;
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(1212, 141);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(200, 20);
+            this.txtName.TabIndex = 41;
+            // 
+            // btnSetCustomer
+            // 
+            this.btnSetCustomer.Location = new System.Drawing.Point(1315, 467);
+            this.btnSetCustomer.Name = "btnSetCustomer";
+            this.btnSetCustomer.Size = new System.Drawing.Size(97, 32);
+            this.btnSetCustomer.TabIndex = 42;
+            this.btnSetCustomer.Text = "Set Customer";
+            this.btnSetCustomer.UseVisualStyleBackColor = true;
+            this.btnSetCustomer.Click += new System.EventHandler(this.btnSetCustomer_Click);
+            // 
             // RoomForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1199, 572);
+            this.ClientSize = new System.Drawing.Size(1486, 634);
+            this.Controls.Add(this.btnSetCustomer);
+            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.txtPhoneNumber);
+            this.Controls.Add(this.dateDOB);
+            this.Controls.Add(this.txtAddress);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblFormTitle);
+            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.lblRoomNumber);
             this.Controls.Add(this.lblStaffName);
             this.Controls.Add(this.label3);
@@ -90,6 +247,7 @@
             this.Name = "RoomForm";
             this.Text = "RoomForm";
             this.Load += new System.EventHandler(this.RoomForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -100,5 +258,19 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblRoomNumber;
+        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Label lblFormTitle;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.IO.FileSystemWatcher fileSystemWatcher1;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtPhoneNumber;
+        private System.Windows.Forms.DateTimePicker dateDOB;
+        private System.Windows.Forms.RichTextBox txtAddress;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Button btnSetCustomer;
     }
 }

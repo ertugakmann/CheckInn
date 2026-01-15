@@ -27,7 +27,7 @@ namespace CheckInn
                         {
                             RoomID = Convert.ToInt32(reader["RoomID"]),
                             RoomType = reader["RoomType"].ToString(),
-                            PricePerNight = Convert.ToSingle(reader["PricePerNight"]),
+                            PricePerNight = reader.GetDecimal(2),
                             Status = reader["Status"].ToString()
                         };
 
@@ -56,7 +56,7 @@ namespace CheckInn
                         {
                             RoomID = reader.GetInt32(0), // the first column is StudentID
                             RoomType = reader.GetString(1), // the second column is FirstName
-                            PricePerNight = reader.GetInt32(2), // the third column is LastName
+                            PricePerNight = reader.GetDecimal(2), // the third column is LastName
                             Status = reader.GetString(3) // the fourth column is StudentDOB
                         };
                     }

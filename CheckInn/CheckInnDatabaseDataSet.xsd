@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="CheckInnDatabaseDataSet" targetNamespace="http://tempuri.org/CheckInnDatabaseDataSet.xsd" xmlns:mstns="http://tempuri.org/CheckInnDatabaseDataSet.xsd" xmlns="http://tempuri.org/CheckInnDatabaseDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="CheckInnDatabaseConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="CheckInnDatabaseConnectionString (Settings)" PropertyReference="ApplicationSettings.CheckInn.Properties.Settings.GlobalReference.Default.CheckInnDatabaseConnectionString" Provider="System.Data.OleDb" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tblRoomTableAdapter" GeneratorDataComponentClassName="tblRoomTableAdapter" Name="tblRoom" UserDataComponentName="tblRoomTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="CheckInnDatabaseConnectionString (Settings)" DbObjectName="tblRoom" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT RoomID, RoomType, PricePerNight, Status FROM tblRoom</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="CheckInnDatabaseDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="CheckInnDatabaseDataSet" msprop:Generator_DataSetName="CheckInnDatabaseDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tblRoom" msprop:Generator_RowEvHandlerName="tblRoomRowChangeEventHandler" msprop:Generator_RowDeletedName="tblRoomRowDeleted" msprop:Generator_RowDeletingName="tblRoomRowDeleting" msprop:Generator_RowEvArgName="tblRoomRowChangeEvent" msprop:Generator_TablePropName="tblRoom" msprop:Generator_RowChangedName="tblRoomRowChanged" msprop:Generator_RowChangingName="tblRoomRowChanging" msprop:Generator_TableClassName="tblRoomDataTable" msprop:Generator_RowClassName="tblRoomRow" msprop:Generator_TableVarName="tabletblRoom" msprop:Generator_UserTableName="tblRoom">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

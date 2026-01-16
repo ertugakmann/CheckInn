@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,6 +11,8 @@ namespace CheckInn
 {
     internal class RoomRepository
     {
+        BookingRepository bookingRepository = new BookingRepository();
+
         string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0; Data Source = " + Environment.CurrentDirectory + @"\CheckInnDatabase.accdb";
         public List<Room> getAllRooms()
         {
@@ -28,7 +31,6 @@ namespace CheckInn
                             RoomID = Convert.ToInt32(reader["RoomID"]),
                             RoomType = reader["RoomType"].ToString(),
                             PricePerNight = reader.GetDecimal(2),
-                            Status = reader["Status"].ToString()
                         };
 
                         rooms.Add(student);
@@ -38,7 +40,8 @@ namespace CheckInn
             return rooms;
         }
 
-        public Room GetSelectedRoom(int roomNumber)
+     
+        public Room GetSelectedRoom(int roomID)
         {
             Room room = null;
             string sql = "SELECT * FROM tblRoom WHERE RoomID = ?"; // ? is a placeholder for parameters in OleDb
@@ -46,7 +49,7 @@ namespace CheckInn
             using (OleDbCommand cmd = new OleDbCommand(sql, conn))
             {
                 conn.Open();
-                cmd.Parameters.AddWithValue("@RoomID", roomNumber); // add the parameter value
+                cmd.Parameters.AddWithValue("@RoomID", roomID); // add the parameter value
 
                 using (OleDbDataReader reader = cmd.ExecuteReader())
                 {
@@ -57,7 +60,6 @@ namespace CheckInn
                             RoomID = reader.GetInt32(0), // the first column is StudentID
                             RoomType = reader.GetString(1), // the second column is FirstName
                             PricePerNight = reader.GetDecimal(2), // the third column is LastName
-                            Status = reader.GetString(3) // the fourth column is StudentDOB
                         };
                     }
                 }
@@ -65,5 +67,25 @@ namespace CheckInn
 
             return room;
         }
+
+        public string GetRoomStatus(int roomID)
+        {
+            List<Booking> roomBookings = bookingRepository.getSelectedRoomBookings(roomID);
+
+            DateTime today = DateTime.Today;
+
+            foreach (var booking in roomBookings)
+            {
+                if (today >= booking.BookingStartsDate.Date &&
+                    today <= booking.BookingEndsDate.Date)
+                {
+                    return "Occupied";
+                }
+            }
+
+            return "Available";
+        }
+
+
     }
 }

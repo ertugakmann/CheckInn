@@ -11,7 +11,11 @@ namespace CheckInn.Model
         public int RoomID { get; set; }
         public string RoomType { get; set; }
         public decimal PricePerNight { get; set; }
-        public string Status { get; set; }
-       
+
+        public string DisplayText
+        {
+            get { return RoomID + " - " + RoomType; }
+        }
+
     }
 }

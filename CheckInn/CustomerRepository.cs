@@ -13,7 +13,7 @@ namespace CheckInn
 
         string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0; Data Source = " + Environment.CurrentDirectory + @"\CheckInnDatabase.accdb";
 
-        public void SetCustomer(Customer customer)
+        public void CreateCustomer(Customer customer)
         {
             // Create New Record for new Customer
             string sql = "INSERT INTO tblCustomer (CustomerName, CustomerDOB, CustomerEmail, CustomerPhoneNumber, CustomerAddress) VALUES (?, ?, ?, ?, ?)";

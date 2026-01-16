@@ -31,11 +31,7 @@ namespace CheckInn
                 lblStatus.Text = "Occupied";
                 lblStatus.ForeColor = Color.Red;
             }
-            else
-            {
-                lblStatus.Text = "Maintenance";
-                lblStatus.ForeColor = Color.Blue;
-            }
+            
         }
     }
 }

@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BookingRepository.cs" />
+    <Compile Include="CheckInnDatabaseDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CheckInnDatabaseDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="CustomerRepository.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -104,6 +110,17 @@
     <EmbeddedResource Include="RoomCard.resx">
       <DependentUpon>RoomCard.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="CheckInnDatabaseDataSet.xsc">
+      <DependentUpon>CheckInnDatabaseDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CheckInnDatabaseDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CheckInnDatabaseDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CheckInnDatabaseDataSet.xss">
+      <DependentUpon>CheckInnDatabaseDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -116,6 +133,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CheckInnDatabase.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

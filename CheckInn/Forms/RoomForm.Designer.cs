@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblStaffName = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,7 +47,19 @@
             this.txtPhoneNumber = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.btnSetCustomer = new System.Windows.Forms.Button();
+            this.dateBookingStarts = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
+            this.dateBookingEndsDate = new System.Windows.Forms.DateTimePicker();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.checkInnDatabaseDataSet = new CheckInn.CheckInnDatabaseDataSet();
+            this.tblRoomBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tblRoomTableAdapter = new CheckInn.CheckInnDatabaseDataSetTableAdapters.tblRoomTableAdapter();
+            this.cmbRoomID = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkInnDatabaseDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblRoomBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // lblStaffName
@@ -214,7 +227,7 @@
             // 
             // btnSetCustomer
             // 
-            this.btnSetCustomer.Location = new System.Drawing.Point(1315, 467);
+            this.btnSetCustomer.Location = new System.Drawing.Point(1317, 685);
             this.btnSetCustomer.Name = "btnSetCustomer";
             this.btnSetCustomer.Size = new System.Drawing.Size(97, 32);
             this.btnSetCustomer.TabIndex = 42;
@@ -222,11 +235,94 @@
             this.btnSetCustomer.UseVisualStyleBackColor = true;
             this.btnSetCustomer.Click += new System.EventHandler(this.btnSetCustomer_Click);
             // 
+            // dateBookingStarts
+            // 
+            this.dateBookingStarts.Location = new System.Drawing.Point(1227, 596);
+            this.dateBookingStarts.Name = "dateBookingStarts";
+            this.dateBookingStarts.Size = new System.Drawing.Size(200, 20);
+            this.dateBookingStarts.TabIndex = 44;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.label8.ForeColor = System.Drawing.Color.Navy;
+            this.label8.Location = new System.Drawing.Point(984, 584);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(195, 32);
+            this.label8.TabIndex = 43;
+            this.label8.Text = "Booking Starts :";
+            // 
+            // dateBookingEndsDate
+            // 
+            this.dateBookingEndsDate.Location = new System.Drawing.Point(1227, 640);
+            this.dateBookingEndsDate.Name = "dateBookingEndsDate";
+            this.dateBookingEndsDate.Size = new System.Drawing.Size(200, 20);
+            this.dateBookingEndsDate.TabIndex = 46;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.label9.ForeColor = System.Drawing.Color.Navy;
+            this.label9.Location = new System.Drawing.Point(984, 628);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(184, 32);
+            this.label9.TabIndex = 45;
+            this.label9.Text = "Booking Ends :";
+            // 
+            // label10
+            // 
+            this.label10.Location = new System.Drawing.Point(0, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(100, 23);
+            this.label10.TabIndex = 49;
+            // 
+            // checkInnDatabaseDataSet
+            // 
+            this.checkInnDatabaseDataSet.DataSetName = "CheckInnDatabaseDataSet";
+            this.checkInnDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tblRoomBindingSource
+            // 
+            this.tblRoomBindingSource.DataMember = "tblRoom";
+            this.tblRoomBindingSource.DataSource = this.checkInnDatabaseDataSet;
+            // 
+            // tblRoomTableAdapter
+            // 
+            this.tblRoomTableAdapter.ClearBeforeFill = true;
+            // 
+            // cmbRoomID
+            // 
+            this.cmbRoomID.FormattingEnabled = true;
+            this.cmbRoomID.Location = new System.Drawing.Point(1212, 452);
+            this.cmbRoomID.Name = "cmbRoomID";
+            this.cmbRoomID.Size = new System.Drawing.Size(200, 21);
+            this.cmbRoomID.TabIndex = 48;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.label11.ForeColor = System.Drawing.Color.Navy;
+            this.label11.Location = new System.Drawing.Point(969, 441);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(232, 32);
+            this.label11.TabIndex = 50;
+            this.label11.Text = "Room Type and ID:";
+            // 
             // RoomForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1486, 634);
+            this.ClientSize = new System.Drawing.Size(1486, 744);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.cmbRoomID);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.dateBookingEndsDate);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.dateBookingStarts);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.btnSetCustomer);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.txtPhoneNumber);
@@ -248,6 +344,8 @@
             this.Text = "RoomForm";
             this.Load += new System.EventHandler(this.RoomForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkInnDatabaseDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblRoomBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -272,5 +370,15 @@
         private System.Windows.Forms.RichTextBox txtAddress;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Button btnSetCustomer;
+        private System.Windows.Forms.DateTimePicker dateBookingEndsDate;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DateTimePicker dateBookingStarts;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label10;
+        private CheckInnDatabaseDataSet checkInnDatabaseDataSet;
+        private System.Windows.Forms.BindingSource tblRoomBindingSource;
+        private CheckInnDatabaseDataSetTableAdapters.tblRoomTableAdapter tblRoomTableAdapter;
+        private System.Windows.Forms.ComboBox cmbRoomID;
+        private System.Windows.Forms.Label label11;
     }
 }

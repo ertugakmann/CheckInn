@@ -8,5 +8,14 @@ namespace CheckInn.Model
 {
     internal class Booking
     {
+        public int BookingID { get; set; }
+        public int CustomerID { get; set; }
+        public int RoomID { get; set; }
+        public DateTime CheckInDate { get; set; }
+        public DateTime CheckOutDate { get; set; }
+        public int TotalAmount { get; set; }
+        public DateTime BookingStartsDate { get; set; }
+        public DateTime BookingEndsDate { get; set; }
+        
     }
 }

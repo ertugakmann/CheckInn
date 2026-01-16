@@ -34,7 +34,7 @@ namespace CheckInn.Forms
             foreach (var room in rooms)
             {
                 string number = room.RoomID.ToString();
-                string status = room.Status;  
+                string status = roomRepository.GetRoomStatus(room.RoomID);
 
                 RoomCard card = new RoomCard(); 
                 card.SetRoom(number, status);

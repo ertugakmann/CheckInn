@@ -32,41 +32,7 @@ namespace CheckInn.Forms
 
         private void RoomForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'checkInnDatabaseDataSet.tblRoom' table. You can move, or remove it, as needed.
-            this.tblRoomTableAdapter.Fill(this.checkInnDatabaseDataSet.tblRoom);
-            this.WindowState = FormWindowState.Maximized;
-
-            // Combo Box
-            List<Room> rooms = roomRepository.getAllRooms();
-
-            cmbRoomID.DataSource = rooms;
-            cmbRoomID.DisplayMember = "DisplayText"; // ekranda görünen
-            cmbRoomID.ValueMember = "RoomID";        // arka planda tutulan
-
-            cmbRoomID.DropDownStyle = ComboBoxStyle.DropDownList;
-
-
-            Room room = roomRepository.GetSelectedRoom(roomNumber);
-
-            lblRoomNumber.Text = Convert.ToString(room.RoomID);
-
-            // Set Labels and Forms
-            string status = roomRepository.GetRoomStatus(room.RoomID);
-            if (status == "Available")
-            {
-                // Set Labels and forms
-                lblStatus.Text = "Available";
-                lblStatus.ForeColor = Color.Green;
-
-                lblFormTitle.Text = "Set Customer to the Room";
-            }
-            else if (status == "Occupied")
-            {
-                lblStatus.Text = "Occupied";
-                lblStatus.ForeColor = Color.Red;
-
-                lblFormTitle.Text = "Manage Room";
-            }
+          
           
 
             
@@ -74,26 +40,57 @@ namespace CheckInn.Forms
 
         private void btnSetCustomer_Click(object sender, EventArgs e)
         {
-            customer = new Customer();
-            booking = new Booking();
+            try
+            {
+                // -------- VALIDATION --------
+                if (string.IsNullOrWhiteSpace(txtName.Text) ||
+                    string.IsNullOrWhiteSpace(txtEmail.Text))
+                {
+                    MessageBox.Show("Name and Email are required");
+                    return;
+                }
 
-            // Set Customer Details to Customer Variable
-            customer.CustomerName = txtName.Text;
-            customer.CustomerDOB = dateDOB.Value;
-            customer.CustomerEmail = txtEmail.Text;
-            customer.CustomerPhoneNumber = txtName.Text;
-            customer.CustomerAddress = txtAddress.Text;
+                if (dateBookingEndsDate.Value <= dateBookingStarts.Value)
+                {
+                    MessageBox.Show("Booking end date must be after start date");
+                    return;
+                }
 
-            customerRepository.CreateCustomer(customer);
+                // -------- CREATE CUSTOMER --------
+                Customer customer = new Customer
+                {
+                    CustomerName = txtName.Text.Trim(),
+                    CustomerDOB = dateDOB.Value,
+                    CustomerEmail = txtEmail.Text.Trim(),
+                    CustomerPhoneNumber = txtPhoneNumber.Text.Trim(), 
+                    CustomerAddress = txtAddress.Text.Trim()
+                };
 
-            // Create new Booking Record
-            
-            booking.BookingStartsDate = dateBookingStarts.Value;
-            booking.BookingEndsDate = dateBookingEndsDate.Value;
+                int newCustomerID = customerRepository.CreateCustomer(customer);
 
-            
+                // -------- CREATE BOOKING --------
+                Booking booking = new Booking
+                {
+                    CustomerID = newCustomerID,
+                    RoomID = roomNumber,
+                    BookingStartsDate = dateBookingStarts.Value,
+                    BookingEndsDate = dateBookingEndsDate.Value
+                };
+
+                bookingRepository.CreateBooking(booking);
+
+                MessageBox.Show("Customer and booking created successfully ✅");
+
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
 
-      
+
+
+
     }
 }

@@ -14,20 +14,25 @@ namespace CheckInn
 
         public void CreateBooking(Booking booking)
         {
-            // Create New Record for new Customer
-            string sql = "INSERT INTO tblBooking (CustomerID, RoomID, BookingStartsDate, BookingEndsDate) VALUES (?, ?, ?, ?)";
+            string sql = @"INSERT INTO tblBooking
+                  (CustomerID, RoomID, BookingStartsDate, BookingEndsDate)
+                  VALUES (?, ?, ?, ?)";
+
             using (OleDbConnection conn = new OleDbConnection(connectionString))
             using (OleDbCommand cmd = new OleDbCommand(sql, conn))
             {
-                cmd.Parameters.AddWithValue("@CustomerID", booking.CustomerID);
-                cmd.Parameters.AddWithValue("@RoomID", booking.RoomID);
-                cmd.Parameters.AddWithValue("@BookingStartsDate", booking.BookingStartsDate.ToString("yyyy-MM-dd"));
-                cmd.Parameters.AddWithValue("@BookingEndsDate", booking.BookingEndsDate.ToString("yyyy-MM-dd"));
-              
+                cmd.Parameters.Add("@CustomerID", OleDbType.Integer).Value = booking.CustomerID;
+                cmd.Parameters.Add("@RoomID", OleDbType.Integer).Value = booking.RoomID;
+                cmd.Parameters.Add("@Start", OleDbType.Date).Value = booking.BookingStartsDate.Date;
+                cmd.Parameters.Add("@End", OleDbType.Date).Value = booking.BookingEndsDate.Date;
+
+
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
         }
+
+
 
         public List<Booking> getSelectedRoomBookings(int roomID)
         {
@@ -45,15 +50,16 @@ namespace CheckInn
                     {
                         Booking booking = new Booking
                         {
-                            BookingID = reader.GetInt32(0),
-                            CustomerID = reader.GetInt32(1),
-                            RoomID = reader.GetInt32(2),
-                            CheckInDate = reader.GetDateTime(3),
-                            CheckOutDate = reader.GetDateTime(4),
-                            TotalAmount = reader.GetInt32(5),
-                            BookingStartsDate = reader.GetDateTime(6),
-                            BookingEndsDate = reader.GetDateTime(7),
+                            BookingID = Convert.ToInt32(reader["BookingID"]),
+                            CustomerID = Convert.ToInt32(reader["CustomerID"]),
+                            RoomID = Convert.ToInt32(reader["RoomID"]),
+                            CheckInDate = Convert.ToDateTime(reader["CheckInDate"]),
+                            CheckOutDate = Convert.ToDateTime(reader["CheckOutDate"]),
+                            TotalAmount = Convert.ToInt32(reader["TotalAmount"]),
+                            BookingStartsDate = Convert.ToDateTime(reader["BookingStartsDate"]),
+                            BookingEndsDate = Convert.ToDateTime(reader["BookingEndsDate"])
                         };
+
 
                         bookings.Add(booking);
                     }

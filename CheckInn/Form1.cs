@@ -15,13 +15,32 @@ namespace CheckInn
     public partial class Form1 : Form
     {
         StaffRepository staffRepository = new StaffRepository();
-       
+
         public void SignIn()
         {
-            int staffPIN = Convert.ToInt32(txtStaffPIN.Text);
+            if (!int.TryParse(txtStaffPIN.Text, out int staffPIN))
+            {
+                MessageBox.Show("Enter a valid PIN");
+                return;
+            }
 
             var staffDetails = staffRepository.getStaffDetails(staffPIN);
+
+            if (staffDetails == null)
+            {
+                MessageBox.Show("Staff not found");
+                return;
+            }
+
             var staffRole = staffRepository.getStaffRole(staffDetails.RoleID);
+
+            if (staffRole == null)
+            {
+                MessageBox.Show("Role not found");
+                return;
+            }
+
+          
 
             switch (staffRole.RoleName)
             {
@@ -30,12 +49,12 @@ namespace CheckInn
                     receptionistForm.Show();
                     break;
 
-                // Add more cases for different roles
-
-                default: 
+                default:
+                    MessageBox.Show("No form mapped for this role");
                     break;
             }
         }
+
 
         public Form1()
         {
@@ -48,7 +67,7 @@ namespace CheckInn
             this.WindowState = FormWindowState.Maximized;
         }
 
-        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        private void Form1_KeyPress(object sen4der, KeyPressEventArgs e)
         {
             // Allow only digits and control keys (like Backspace)
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))

@@ -44,7 +44,7 @@ namespace CheckInn.Forms
                 {
 
                     // I left here, form does not get opened
-                    MessageBox.Show("Clicked room " + number);
+                   
                     RoomForm roomForm = new RoomForm(Convert.ToInt32(number));
                     roomForm.Show();
                 };

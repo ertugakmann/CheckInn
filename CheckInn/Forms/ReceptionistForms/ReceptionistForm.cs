@@ -1,4 +1,5 @@
-﻿using CheckInn.Model;
+﻿using CheckInn.Forms.ReceptionistForms;
+using CheckInn.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ namespace CheckInn.Forms
     public partial class ReceptionistForm : Form
     {
         RoomRepository roomRepository = new RoomRepository();
+        CustomerRepository customerRepository = new CustomerRepository();
 
         private Staff staffDetails;
         private StaffRole staffRole;
@@ -42,9 +44,6 @@ namespace CheckInn.Forms
 
                 card.Click += (s, e) =>
                 {
-
-                    // I left here, form does not get opened
-                   
                     RoomForm roomForm = new RoomForm(Convert.ToInt32(number));
                     roomForm.Show();
                 };
@@ -72,7 +71,16 @@ namespace CheckInn.Forms
             LoadRooms();
         }
 
-       
+        private void btnCreateCustomer_Click(object sender, EventArgs e)
+        {
+            CreateNewCustomerForm createNewCustomerForm = new CreateNewCustomerForm();
+            createNewCustomerForm.ShowDialog();
+        }
 
+        private void btnCreateBooking_Click(object sender, EventArgs e)
+        {
+            CreateNewBookingForm createNewBookingForm = new CreateNewBookingForm();
+            createNewBookingForm.ShowDialog();
+        }
     }
 }

@@ -53,8 +53,6 @@ namespace CheckInn
                             BookingID = Convert.ToInt32(reader["BookingID"]),
                             CustomerID = Convert.ToInt32(reader["CustomerID"]),
                             RoomID = Convert.ToInt32(reader["RoomID"]),
-                            CheckInDate = Convert.ToDateTime(reader["CheckInDate"]),
-                            CheckOutDate = Convert.ToDateTime(reader["CheckOutDate"]),
                             TotalAmount = Convert.ToInt32(reader["TotalAmount"]),
                             BookingStartsDate = Convert.ToDateTime(reader["BookingStartsDate"]),
                             BookingEndsDate = Convert.ToDateTime(reader["BookingEndsDate"])

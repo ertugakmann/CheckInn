@@ -59,10 +59,22 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ReceptionistForm.cs">
+    <Compile Include="Forms\ReceptionistForms\CreateNewBookingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ReceptionistForm.Designer.cs">
+    <Compile Include="Forms\ReceptionistForms\CreateNewBookingForm.Designer.cs">
+      <DependentUpon>CreateNewBookingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReceptionistForms\CreateNewCustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReceptionistForms\CreateNewCustomerForm.Designer.cs">
+      <DependentUpon>CreateNewCustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReceptionistForms\ReceptionistForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReceptionistForms\ReceptionistForm.Designer.cs">
       <DependentUpon>ReceptionistForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\RoomForm.cs">
@@ -92,7 +104,13 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ReceptionistForm.resx">
+    <EmbeddedResource Include="Forms\ReceptionistForms\CreateNewBookingForm.resx">
+      <DependentUpon>CreateNewBookingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReceptionistForms\CreateNewCustomerForm.resx">
+      <DependentUpon>CreateNewCustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReceptionistForms\ReceptionistForm.resx">
       <DependentUpon>ReceptionistForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RoomForm.resx">

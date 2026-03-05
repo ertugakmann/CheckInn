@@ -35,6 +35,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblRole = new System.Windows.Forms.Label();
             this.flwRooms = new System.Windows.Forms.FlowLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnCreateCustomer = new System.Windows.Forms.Button();
+            this.btnCreateBooking = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,11 +104,55 @@
             this.flwRooms.Size = new System.Drawing.Size(1132, 735);
             this.flwRooms.TabIndex = 25;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Navy;
+            this.label2.Location = new System.Drawing.Point(21, 277);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(372, 45);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "Create a New Customer";
+            // 
+            // btnCreateCustomer
+            // 
+            this.btnCreateCustomer.Location = new System.Drawing.Point(29, 345);
+            this.btnCreateCustomer.Name = "btnCreateCustomer";
+            this.btnCreateCustomer.Size = new System.Drawing.Size(101, 23);
+            this.btnCreateCustomer.TabIndex = 0;
+            this.btnCreateCustomer.Text = "Create Customer";
+            this.btnCreateCustomer.Click += new System.EventHandler(this.btnCreateCustomer_Click);
+            // 
+            // btnCreateBooking
+            // 
+            this.btnCreateBooking.Location = new System.Drawing.Point(31, 462);
+            this.btnCreateBooking.Name = "btnCreateBooking";
+            this.btnCreateBooking.Size = new System.Drawing.Size(101, 23);
+            this.btnCreateBooking.TabIndex = 27;
+            this.btnCreateBooking.Text = "Create Booking";
+            this.btnCreateBooking.Click += new System.EventHandler(this.btnCreateBooking_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Navy;
+            this.label4.Location = new System.Drawing.Point(23, 394);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(355, 45);
+            this.label4.TabIndex = 28;
+            this.label4.Text = "Create a New Booking";
+            // 
             // ReceptionistForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1820, 779);
+            this.Controls.Add(this.btnCreateBooking);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.btnCreateCustomer);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.flwRooms);
             this.Controls.Add(this.lblRole);
             this.Controls.Add(this.lblStaffName);
@@ -128,5 +176,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblRole;
         private System.Windows.Forms.FlowLayoutPanel flwRooms;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnCreateCustomer;
+        private System.Windows.Forms.Button btnCreateBooking;
+        private System.Windows.Forms.Label label4;
     }
 }

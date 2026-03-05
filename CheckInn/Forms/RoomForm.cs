@@ -32,64 +32,9 @@ namespace CheckInn.Forms
 
         private void RoomForm_Load(object sender, EventArgs e)
         {
-          
-          
+         
 
-            
         }
-
-        private void btnSetCustomer_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // -------- VALIDATION --------
-                if (string.IsNullOrWhiteSpace(txtName.Text) ||
-                    string.IsNullOrWhiteSpace(txtEmail.Text))
-                {
-                    MessageBox.Show("Name and Email are required");
-                    return;
-                }
-
-                if (dateBookingEndsDate.Value <= dateBookingStarts.Value)
-                {
-                    MessageBox.Show("Booking end date must be after start date");
-                    return;
-                }
-
-                // -------- CREATE CUSTOMER --------
-                Customer customer = new Customer
-                {
-                    CustomerName = txtName.Text.Trim(),
-                    CustomerDOB = dateDOB.Value,
-                    CustomerEmail = txtEmail.Text.Trim(),
-                    CustomerPhoneNumber = txtPhoneNumber.Text.Trim(), 
-                    CustomerAddress = txtAddress.Text.Trim()
-                };
-
-                int newCustomerID = customerRepository.CreateCustomer(customer);
-
-                // -------- CREATE BOOKING --------
-                Booking booking = new Booking
-                {
-                    CustomerID = newCustomerID,
-                    RoomID = roomNumber,
-                    BookingStartsDate = dateBookingStarts.Value,
-                    BookingEndsDate = dateBookingEndsDate.Value
-                };
-
-                bookingRepository.CreateBooking(booking);
-
-                MessageBox.Show("Customer and booking created successfully ✅");
-
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
-
-
 
 
     }

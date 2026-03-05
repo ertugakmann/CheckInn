@@ -14,6 +14,7 @@ namespace CheckInn.Model
         public int TotalAmount { get; set; }
         public DateTime BookingStartsDate { get; set; }
         public DateTime BookingEndsDate { get; set; }
+        public string BookingStatus { get; set; }
         
     }
 }

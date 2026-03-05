@@ -14,6 +14,11 @@ namespace CheckInn.Model
         public string CustomerEmail { get; set; }
         public string CustomerPhoneNumber { get; set; }
         public string CustomerAddress { get; set; }
-        
+
+        public string Details 
+        {
+            get { return $"{CustomerID} - {CustomerName}"; }
+                
+        }
     }
 }

@@ -32,6 +32,34 @@ namespace CheckInn
             }
         }
 
+        public List<Booking> GetAllBookings()
+        {
+            List<Booking> bookings = new List<Booking>();
+            string sql = "SELECT * FROM tblBooking";
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+            {
+                conn.Open();
+                using (OleDbDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Booking booking = new Booking
+                        {
+                            BookingID = Convert.ToInt32(reader["BookingID"]),
+                            CustomerID = Convert.ToInt32(reader["CustomerID"]),
+                            RoomID = Convert.ToInt32(reader["RoomID"]),
+                            TotalAmount = Convert.ToInt32(reader["TotalAmount"]),
+                            BookingStartsDate = Convert.ToDateTime(reader["BookingStartsDate"]),
+                            BookingEndsDate = Convert.ToDateTime(reader["BookingEndsDate"])
+                        };
+
+                        bookings.Add(booking);
+                    }
+                }
+            }
+            return bookings;
+        }
 
 
         public List<Booking> getSelectedRoomBookings(int roomID)
@@ -64,6 +92,31 @@ namespace CheckInn
                 }
             }
             return bookings;
+        }
+
+        public void UpdateBooking(Booking booking)
+        {
+            string sql = @"UPDATE tblBooking
+                   SET CustomerID = ?,
+                       RoomID = ?,
+                       TotalAmount = ?,
+                       BookingStartsDate = ?,
+                       BookingEndsDate = ?
+                   WHERE BookingID = ?";
+
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("@CustomerID", booking.CustomerID);
+                cmd.Parameters.AddWithValue("@RoomID", booking.RoomID);
+                cmd.Parameters.AddWithValue("@TotalAmount", booking.TotalAmount);
+                cmd.Parameters.AddWithValue("@StartDate", booking.BookingStartsDate);
+                cmd.Parameters.AddWithValue("@EndDate", booking.BookingEndsDate);
+                cmd.Parameters.AddWithValue("@BookingID", booking.BookingID);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
         }
     }
 }

@@ -33,7 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -71,16 +73,40 @@
     <Compile Include="Forms\ReceptionistForms\CreateNewCustomerForm.Designer.cs">
       <DependentUpon>CreateNewCustomerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ReceptionistForms\ManageBookings\ManageBookingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReceptionistForms\ManageBookings\ManageBookingsForm.Designer.cs">
+      <DependentUpon>ManageBookingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReceptionistForms\ManageBookings\UpdateBookingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReceptionistForms\ManageBookings\UpdateBookingForm.Designer.cs">
+      <DependentUpon>UpdateBookingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReceptionistForms\ManageCustomers\ManageBookings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReceptionistForms\ManageCustomers\ManageBookings.Designer.cs">
+      <DependentUpon>ManageBookings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReceptionistForms\ManageCustomers\UpdateCustomers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReceptionistForms\ManageCustomers\UpdateCustomers.Designer.cs">
+      <DependentUpon>UpdateCustomers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ReceptionistForms\ReceptionistForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\ReceptionistForms\ReceptionistForm.Designer.cs">
       <DependentUpon>ReceptionistForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\RoomForm.cs">
+    <Compile Include="Forms\ReceptionistForms\RoomForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\RoomForm.Designer.cs">
+    <Compile Include="Forms\ReceptionistForms\RoomForm.Designer.cs">
       <DependentUpon>RoomForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Booking.cs" />
@@ -110,10 +136,22 @@
     <EmbeddedResource Include="Forms\ReceptionistForms\CreateNewCustomerForm.resx">
       <DependentUpon>CreateNewCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReceptionistForms\ManageBookings\ManageBookingsForm.resx">
+      <DependentUpon>ManageBookingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReceptionistForms\ManageBookings\UpdateBookingForm.resx">
+      <DependentUpon>UpdateBookingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReceptionistForms\ManageCustomers\ManageBookings.resx">
+      <DependentUpon>ManageBookings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReceptionistForms\ManageCustomers\UpdateCustomers.resx">
+      <DependentUpon>UpdateCustomers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReceptionistForms\ReceptionistForm.resx">
       <DependentUpon>ReceptionistForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\RoomForm.resx">
+    <EmbeddedResource Include="Forms\ReceptionistForms\RoomForm.resx">
       <DependentUpon>RoomForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -154,7 +192,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CheckInnDatabase.accdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

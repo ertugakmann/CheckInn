@@ -39,6 +39,8 @@
             this.btnCreateCustomer = new System.Windows.Forms.Button();
             this.btnCreateBooking = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnManageBookings = new System.Windows.Forms.Button();
+            this.btnManageCustomer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -144,11 +146,31 @@
             this.label4.TabIndex = 28;
             this.label4.Text = "Create a New Booking";
             // 
+            // btnManageBookings
+            // 
+            this.btnManageBookings.Location = new System.Drawing.Point(153, 462);
+            this.btnManageBookings.Name = "btnManageBookings";
+            this.btnManageBookings.Size = new System.Drawing.Size(101, 23);
+            this.btnManageBookings.TabIndex = 29;
+            this.btnManageBookings.Text = "Manage Bookings";
+            this.btnManageBookings.Click += new System.EventHandler(this.btnManageBookings_Click);
+            // 
+            // btnManageCustomer
+            // 
+            this.btnManageCustomer.Location = new System.Drawing.Point(153, 345);
+            this.btnManageCustomer.Name = "btnManageCustomer";
+            this.btnManageCustomer.Size = new System.Drawing.Size(115, 23);
+            this.btnManageCustomer.TabIndex = 30;
+            this.btnManageCustomer.Text = "Manage Customers";
+            this.btnManageCustomer.Click += new System.EventHandler(this.btnManageCustomer_Click);
+            // 
             // ReceptionistForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1820, 779);
+            this.Controls.Add(this.btnManageCustomer);
+            this.Controls.Add(this.btnManageBookings);
             this.Controls.Add(this.btnCreateBooking);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnCreateCustomer);
@@ -180,5 +202,7 @@
         private System.Windows.Forms.Button btnCreateCustomer;
         private System.Windows.Forms.Button btnCreateBooking;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnManageBookings;
+        private System.Windows.Forms.Button btnManageCustomer;
     }
 }

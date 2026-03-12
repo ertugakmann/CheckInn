@@ -66,7 +66,36 @@ namespace CheckInn
             }
         }
 
-        
+        public Customer GetSelectedCustomer(int customerID)
+        {
+            Customer customer = null;
+            string sql = "SELECT * FROM tblCustomer WHERE CustomerID = ?"; // ? is a placeholder for parameters in OleDb
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@customerID", customerID); // add the parameter value
+
+                using (OleDbDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        customer = new Customer
+                        {
+                            CustomerID = Convert.ToInt32(reader["CustomerID"]),
+                            CustomerName = reader["CustomerName"].ToString(),
+                            CustomerDOB = reader.GetDateTime(2).Date,
+                            CustomerEmail = reader["CustomerEmail"].ToString(),
+                            CustomerAddress = reader["CustomerAddress"].ToString(),
+                            CustomerPhoneNumber = reader["CustomerPhoneNumber"].ToString()
+                        };
+                    }
+                }
+            }
+
+            return customer;
+        }
+
 
 
     }

@@ -24,62 +24,83 @@ namespace CheckInn.Forms.ReceptionistForms
 
         private void CreateNewBookingForm_Load(object sender, EventArgs e)
         {
-            // Customer ComboBox
+            // Customers
             List<Customer> customers = customerRepository.GetAllCustomers();
 
             cmbCustomer.DataSource = customers;
-            cmbCustomer.DisplayMember = "Details";
+            cmbCustomer.DisplayMember = "CustomerName";
             cmbCustomer.ValueMember = "CustomerID";
 
-            // Room ComboBox
+            // Rooms
             List<Room> rooms = roomRepository.getAllRooms();
 
-            cmbRoom.DataSource = customers;
-            cmbRoom.DisplayMember = "Details";
+            cmbRoom.DataSource = rooms;
+            cmbRoom.DisplayMember = "RoomType";
             cmbRoom.ValueMember = "RoomID";
         }
 
-      
-
         private void cmbCustomer_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbCustomer.SelectedItem is Customer selectedCustomer)
-            {
-                txtName.Text = selectedCustomer.CustomerName;
-                dateDOB.Value = selectedCustomer.CustomerDOB;
-                txtEmail.Text = selectedCustomer.CustomerEmail;
-                txtPhoneNumber.Text = selectedCustomer.CustomerPhoneNumber;
-                txtAddress.Text = selectedCustomer.CustomerAddress;
-            }
+            if (cmbCustomer.SelectedItem == null) return;
+
+            Customer selectedCustomer = (Customer)cmbCustomer.SelectedItem;
+
+            txtName.Text = selectedCustomer.CustomerName;
+            dateDOB.Value = selectedCustomer.CustomerDOB;
+            txtEmail.Text = selectedCustomer.CustomerEmail;
+            txtPhoneNumber.Text = selectedCustomer.CustomerPhoneNumber;
+            txtAddress.Text = selectedCustomer.CustomerAddress;
         }
+
 
         private void cmbRoom_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbCustomer.SelectedItem is Room selectedRoom)
+            if (cmbRoom.SelectedItem is Room selectedRoom)  
             {
                 txtRoomType.Text = selectedRoom.RoomType;
-                txtRoomPrice.Text = Convert.ToString(selectedRoom.PricePerNight);
+                txtRoomPrice.Text = selectedRoom.PricePerNight.ToString();
             }
         }
 
-
-        private void btnSetCustomer_Click(object sender, EventArgs e)
+        private void btnCreateBooking_Click(object sender, EventArgs e)
         {
             try
             {
-                if (dateBookingEndsDate.Value <= dateBookingStarts.Value)
+                // -------- CUSTOMER VALIDATION --------
+                if (cmbCustomer.SelectedItem == null)
                 {
-                    MessageBox.Show("Booking end date must be after start date");
+                    MessageBox.Show("Please select a customer.");
                     return;
                 }
+
+                // -------- ROOM VALIDATION --------
+                if (cmbRoom.SelectedItem == null)
+                {
+                    MessageBox.Show("Please select a room.");
+                    return;
+                }
+
+                // -------- DATE VALIDATION --------
+                if (dateBookingStarts.Value.Date < DateTime.Today)
+                {
+                    MessageBox.Show("Booking start date cannot be in the past.");
+                    return;
+                }
+
+                if (dateBookingEndsDate.Value <= dateBookingStarts.Value)
+                {
+                    MessageBox.Show("Booking end date must be after the start date.");
+                    return;
+                }
+
                 // -------- CREATE BOOKING --------
                 Booking booking = new Booking
                 {
-                    CustomerID = Convert.ToInt32(cmbCustomer.Text),
-                    RoomID = Convert.ToInt32(cmbRoom.Text),
+                    CustomerID = Convert.ToInt32(cmbCustomer.SelectedValue),
+                    RoomID = Convert.ToInt32(cmbRoom.SelectedValue),
                     BookingStartsDate = dateBookingStarts.Value,
                     BookingEndsDate = dateBookingEndsDate.Value,
-                    BookingStatus = "Confirmed",
+                    BookingStatus = "Confirmed"
                 };
 
                 bookingRepository.CreateBooking(booking);
@@ -90,10 +111,8 @@ namespace CheckInn.Forms.ReceptionistForms
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Error occurred: " + ex.Message);
             }
         }
-
-
     }
 }

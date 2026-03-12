@@ -82,5 +82,16 @@ namespace CheckInn.Forms
             CreateNewBookingForm createNewBookingForm = new CreateNewBookingForm();
             createNewBookingForm.ShowDialog();
         }
+
+        private void btnManageBookings_Click(object sender, EventArgs e)
+        {
+            ManageBookingsForm manageBookingsForm = new ManageBookingsForm();
+            manageBookingsForm.ShowDialog();
+        }
+
+        private void btnManageCustomer_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

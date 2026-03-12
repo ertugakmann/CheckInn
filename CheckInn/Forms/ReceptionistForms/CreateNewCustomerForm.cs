@@ -24,11 +24,45 @@ namespace CheckInn.Forms.ReceptionistForms
         {
             try
             {
-                // -------- VALIDATION --------
-                if (string.IsNullOrWhiteSpace(txtName.Text) ||
-                    string.IsNullOrWhiteSpace(txtEmail.Text))
+                // -------- NAME VALIDATION --------
+                if (string.IsNullOrWhiteSpace(txtName.Text))
                 {
-                    MessageBox.Show("Name and Email are required");
+                    MessageBox.Show("Customer name is required.");
+                    return;
+                }
+
+                // -------- EMAIL VALIDATION --------
+                if (string.IsNullOrWhiteSpace(txtEmail.Text))
+                {
+                    MessageBox.Show("Email is required.");
+                    return;
+                }
+
+                if (!txtEmail.Text.Contains("@") || !txtEmail.Text.Contains("."))
+                {
+                    MessageBox.Show("Please enter a valid email address.");
+                    return;
+                }
+
+                // -------- PHONE VALIDATION --------
+                if (string.IsNullOrWhiteSpace(txtPhoneNumber.Text))
+                {
+                    MessageBox.Show("Phone number is required.");
+                    return;
+                }
+
+                // -------- DATE OF BIRTH VALIDATION --------
+                if (dateDOB.Value > DateTime.Now)
+                {
+                    MessageBox.Show("Date of birth cannot be in the future.");
+                    return;
+                }
+
+                int age = DateTime.Now.Year - dateDOB.Value.Year;
+
+                if (age < 0)
+                {
+                    MessageBox.Show("Invalid date of birth.");
                     return;
                 }
 
@@ -36,7 +70,7 @@ namespace CheckInn.Forms.ReceptionistForms
                 Customer customer = new Customer
                 {
                     CustomerName = txtName.Text.Trim(),
-                    CustomerDOB = dateDOB.Value,
+                    CustomerDOB = dateDOB.Value.Date,
                     CustomerEmail = txtEmail.Text.Trim(),
                     CustomerPhoneNumber = txtPhoneNumber.Text.Trim(),
                     CustomerAddress = txtAddress.Text.Trim()
@@ -50,11 +84,8 @@ namespace CheckInn.Forms.ReceptionistForms
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show("Error: " + ex.Message); ;
+                MessageBox.Show("Error occurred: " + ex.Message);
             }
-
-
         }
     }
 }

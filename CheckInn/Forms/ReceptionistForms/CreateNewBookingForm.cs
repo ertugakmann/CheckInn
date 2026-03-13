@@ -24,6 +24,9 @@ namespace CheckInn.Forms.ReceptionistForms
 
         private void CreateNewBookingForm_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
+
+
             // Customers
             List<Customer> customers = customerRepository.GetAllCustomers();
 
@@ -35,8 +38,17 @@ namespace CheckInn.Forms.ReceptionistForms
             List<Room> rooms = roomRepository.getAllRooms();
 
             cmbRoom.DataSource = rooms;
-            cmbRoom.DisplayMember = "RoomType";
+            cmbRoom.DisplayMember = "DisplayText";
             cmbRoom.ValueMember = "RoomID";
+
+            // Show Room Bookings
+            gridRoomBookings.AutoGenerateColumns = false;
+
+            gridRoomBookings.Columns.Add("StartDate", "Start Date");
+            gridRoomBookings.Columns["StartDate"].DataPropertyName = "BookingStartsDate";
+
+            gridRoomBookings.Columns.Add("EndDate", "End Date");
+            gridRoomBookings.Columns["EndDate"].DataPropertyName = "BookingEndsDate";
         }
 
         private void cmbCustomer_SelectedIndexChanged(object sender, EventArgs e)
@@ -55,10 +67,14 @@ namespace CheckInn.Forms.ReceptionistForms
 
         private void cmbRoom_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbRoom.SelectedItem is Room selectedRoom)  
+            if (cmbRoom.SelectedItem is Room selectedRoom)
             {
                 txtRoomType.Text = selectedRoom.RoomType;
                 txtRoomPrice.Text = selectedRoom.PricePerNight.ToString();
+
+                List<Booking> bookings = bookingRepository.getSelectedRoomBookings(selectedRoom.RoomID);
+
+                gridRoomBookings.DataSource = bookings;
             }
         }
 
@@ -66,6 +82,28 @@ namespace CheckInn.Forms.ReceptionistForms
         {
             try
             {
+                // Check Room Availability
+                int roomID = Convert.ToInt32(cmbRoom.SelectedValue);
+
+                Booking existingBooking = bookingRepository.CheckRoomAvailability(
+                    roomID,
+                    dateBookingStarts.Value,
+                    dateBookingEndsDate.Value
+                );
+
+                if (existingBooking != null)
+                {
+                    MessageBox.Show(
+                        "Room is not available for these dates.\n\n" +
+                        "Existing booking:\n" +
+                        "Start: " + existingBooking.BookingStartsDate.ToShortDateString() +
+                        "\nEnd: " + existingBooking.BookingEndsDate.ToShortDateString(),
+                        "Room Not Available"
+                    );
+
+                    return;
+                }
+
                 // -------- CUSTOMER VALIDATION --------
                 if (cmbCustomer.SelectedItem == null)
                 {
@@ -100,7 +138,7 @@ namespace CheckInn.Forms.ReceptionistForms
                     RoomID = Convert.ToInt32(cmbRoom.SelectedValue),
                     BookingStartsDate = dateBookingStarts.Value,
                     BookingEndsDate = dateBookingEndsDate.Value,
-                    BookingStatus = "Confirmed"
+                    BookingStatus = "Active"
                 };
 
                 bookingRepository.CreateBooking(booking);

@@ -1,13 +1,8 @@
 ﻿using CheckInn.Forms.ReceptionistForms;
+using CheckInn.Forms.ReceptionistForms.ManageCustomers;
 using CheckInn.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CheckInn.Forms
@@ -16,6 +11,7 @@ namespace CheckInn.Forms
     {
         RoomRepository roomRepository = new RoomRepository();
         CustomerRepository customerRepository = new CustomerRepository();
+        BookingRepository bookingRepository = new BookingRepository();
 
         private Staff staffDetails;
         private StaffRole staffRole;
@@ -38,60 +34,101 @@ namespace CheckInn.Forms
                 string number = room.RoomID.ToString();
                 string status = roomRepository.GetRoomStatus(room.RoomID);
 
-                RoomCard card = new RoomCard(); 
+                RoomCard card = new RoomCard();
                 card.SetRoom(number, status);
                 card.Margin = new Padding(10);
 
                 card.Click += (s, e) =>
                 {
                     RoomForm roomForm = new RoomForm(Convert.ToInt32(number));
-                    roomForm.Show();
+                    roomForm.ShowDialog();
+
+                    // refresh UI after room changes
+                    LoadRooms();
+                    LoadDashboard();
                 };
 
                 flwRooms.Controls.Add(card);
             }
         }
 
+        private void FormatBookingGrid(DataGridView grid)
+        {
+            grid.ReadOnly = true;
+            grid.AllowUserToAddRows = false;
+            grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            if (grid.Columns["Room"] != null)
+                grid.Columns["Room"].HeaderText = "Room";
+
+            if (grid.Columns["Customer"] != null)
+                grid.Columns["Customer"].HeaderText = "Customer";
+
+            if (grid.Columns["Check In"] != null)
+                grid.Columns["Check In"].HeaderText = "Check-In";
+
+            if (grid.Columns["Check Out"] != null)
+                grid.Columns["Check Out"].HeaderText = "Check-Out";
+        }
+
+        private void LoadDashboard()
+        {
+            int totalRooms = bookingRepository.GetTotalRooms();
+            int occupiedRooms = bookingRepository.GetOccupiedRooms();
+
+            lblTotalRooms.Text = "Total Rooms: " + totalRooms;
+            lblOccupiedRooms.Text = "Occupied Rooms: " + occupiedRooms;
+            lblAvailableRooms.Text = "Available Rooms: " + (totalRooms - occupiedRooms);
+
+            gridCheckIns.DataSource = bookingRepository.GetTodaysCheckIns();
+            gridCheckOuts.DataSource = bookingRepository.GetTodaysCheckOuts();
+
+            FormatBookingGrid(gridCheckIns);
+            FormatBookingGrid(gridCheckOuts);
+        }
 
         private void ReceptionistForm_Load(object sender, EventArgs e)
         {
-            lblStaffName.Text = $"Welcome back {staffDetails.StaffName}";
+            lblStaffName.Text = "Welcome back " + staffDetails.StaffName;
 
-            // Maximize the screen size
             this.WindowState = FormWindowState.Maximized;
 
-            // Hide the first form
-            Form1 signInForm = new Form1();
-            signInForm.Hide();
-
-            // Set the dynamic text
             lblRole.Text = staffRole.RoleName;
 
-            // Load Rooms
             LoadRooms();
+            LoadDashboard();
         }
 
         private void btnCreateCustomer_Click(object sender, EventArgs e)
         {
-            CreateNewCustomerForm createNewCustomerForm = new CreateNewCustomerForm();
-            createNewCustomerForm.ShowDialog();
+            CreateNewCustomerForm createCustomer = new CreateNewCustomerForm();
+            createCustomer.ShowDialog();
+
+            LoadDashboard();
         }
 
         private void btnCreateBooking_Click(object sender, EventArgs e)
         {
-            CreateNewBookingForm createNewBookingForm = new CreateNewBookingForm();
-            createNewBookingForm.ShowDialog();
+            CreateNewBookingForm createBooking = new CreateNewBookingForm();
+            createBooking.ShowDialog();
+
+            LoadRooms();
+            LoadDashboard();
         }
 
         private void btnManageBookings_Click(object sender, EventArgs e)
         {
-            ManageBookingsForm manageBookingsForm = new ManageBookingsForm();
-            manageBookingsForm.ShowDialog();
+            ManageBookingsForm manageBookings = new ManageBookingsForm();
+            manageBookings.ShowDialog();
+
+            LoadRooms();
+            LoadDashboard();
         }
 
         private void btnManageCustomer_Click(object sender, EventArgs e)
         {
-
+            ManageCustomerForm manageCustomers = new ManageCustomerForm();
+            manageCustomers.ShowDialog();
         }
     }
 }

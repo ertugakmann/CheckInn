@@ -54,6 +54,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtBookingFee = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.btnCancelBooking = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -243,7 +244,7 @@
             // 
             // btnUpdateBooking
             // 
-            this.btnUpdateBooking.Location = new System.Drawing.Point(901, 494);
+            this.btnUpdateBooking.Location = new System.Drawing.Point(822, 493);
             this.btnUpdateBooking.Name = "btnUpdateBooking";
             this.btnUpdateBooking.Size = new System.Drawing.Size(97, 32);
             this.btnUpdateBooking.TabIndex = 89;
@@ -306,11 +307,22 @@
             this.label10.TabIndex = 94;
             this.label10.Text = "Total Booking Fee :";
             // 
+            // btnCancelBooking
+            // 
+            this.btnCancelBooking.Location = new System.Drawing.Point(925, 493);
+            this.btnCancelBooking.Name = "btnCancelBooking";
+            this.btnCancelBooking.Size = new System.Drawing.Size(97, 32);
+            this.btnCancelBooking.TabIndex = 96;
+            this.btnCancelBooking.Text = "Cancel Booking";
+            this.btnCancelBooking.UseVisualStyleBackColor = true;
+            this.btnCancelBooking.Click += new System.EventHandler(this.btnCancelBooking_Click);
+            // 
             // UpdateBookingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1039, 561);
+            this.Controls.Add(this.btnCancelBooking);
             this.Controls.Add(this.txtBookingFee);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.dateBookingEndsDate);
@@ -373,5 +385,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtBookingFee;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnCancelBooking;
     }
 }

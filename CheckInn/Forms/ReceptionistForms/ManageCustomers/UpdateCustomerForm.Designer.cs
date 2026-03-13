@@ -1,6 +1,6 @@
 ﻿namespace CheckInn.Forms.ReceptionistForms.ManageCustomers
 {
-    partial class UpdateCustomers
+    partial class UpdateCustomerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cmbCustomer = new System.Windows.Forms.ComboBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtPhoneNumber = new System.Windows.Forms.TextBox();
             this.dateDOB = new System.Windows.Forms.DateTimePicker();
@@ -41,19 +40,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.btnUpdateBooking = new System.Windows.Forms.Button();
+            this.txtCustomerID = new System.Windows.Forms.TextBox();
+            this.btnDeleteCustomer = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // cmbCustomer
-            // 
-            this.cmbCustomer.FormattingEnabled = true;
-            this.cmbCustomer.Location = new System.Drawing.Point(271, 98);
-            this.cmbCustomer.Name = "cmbCustomer";
-            this.cmbCustomer.Size = new System.Drawing.Size(200, 21);
-            this.cmbCustomer.TabIndex = 94;
             // 
             // txtName
             // 
-            this.txtName.Enabled = false;
             this.txtName.Location = new System.Drawing.Point(271, 143);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(200, 20);
@@ -61,7 +54,6 @@
             // 
             // txtPhoneNumber
             // 
-            this.txtPhoneNumber.Enabled = false;
             this.txtPhoneNumber.Location = new System.Drawing.Point(271, 303);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(200, 20);
@@ -69,7 +61,6 @@
             // 
             // dateDOB
             // 
-            this.dateDOB.Enabled = false;
             this.dateDOB.Location = new System.Drawing.Point(271, 190);
             this.dateDOB.Name = "dateDOB";
             this.dateDOB.Size = new System.Drawing.Size(200, 20);
@@ -77,7 +68,6 @@
             // 
             // txtAddress
             // 
-            this.txtAddress.Enabled = false;
             this.txtAddress.Location = new System.Drawing.Point(271, 360);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(200, 48);
@@ -86,7 +76,6 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Enabled = false;
             this.txtEmail.Location = new System.Drawing.Point(271, 244);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(200, 20);
@@ -169,13 +158,43 @@
             this.label11.TabIndex = 95;
             this.label11.Text = "Customer :";
             // 
-            // UpdateCustomers
+            // btnUpdateBooking
+            // 
+            this.btnUpdateBooking.Location = new System.Drawing.Point(374, 435);
+            this.btnUpdateBooking.Name = "btnUpdateBooking";
+            this.btnUpdateBooking.Size = new System.Drawing.Size(97, 32);
+            this.btnUpdateBooking.TabIndex = 96;
+            this.btnUpdateBooking.Text = "Update Customer";
+            this.btnUpdateBooking.UseVisualStyleBackColor = true;
+            this.btnUpdateBooking.Click += new System.EventHandler(this.btnUpdateCustomer_Click);
+            // 
+            // txtCustomerID
+            // 
+            this.txtCustomerID.Enabled = false;
+            this.txtCustomerID.Location = new System.Drawing.Point(271, 99);
+            this.txtCustomerID.Name = "txtCustomerID";
+            this.txtCustomerID.Size = new System.Drawing.Size(200, 20);
+            this.txtCustomerID.TabIndex = 97;
+            // 
+            // btnDeleteCustomer
+            // 
+            this.btnDeleteCustomer.Location = new System.Drawing.Point(271, 435);
+            this.btnDeleteCustomer.Name = "btnDeleteCustomer";
+            this.btnDeleteCustomer.Size = new System.Drawing.Size(97, 32);
+            this.btnDeleteCustomer.TabIndex = 98;
+            this.btnDeleteCustomer.Text = "Delete Customer";
+            this.btnDeleteCustomer.UseVisualStyleBackColor = true;
+            this.btnDeleteCustomer.Click += new System.EventHandler(this.btnDeleteCustomer_Click);
+            // 
+            // UpdateCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(560, 479);
+            this.Controls.Add(this.btnDeleteCustomer);
+            this.Controls.Add(this.txtCustomerID);
+            this.Controls.Add(this.btnUpdateBooking);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.cmbCustomer);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.txtPhoneNumber);
             this.Controls.Add(this.dateDOB);
@@ -187,16 +206,15 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "UpdateCustomers";
+            this.Name = "UpdateCustomerForm";
             this.Text = "UpdateCustomers";
+            this.Load += new System.EventHandler(this.UpdateCustomerForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox cmbCustomer;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtPhoneNumber;
         private System.Windows.Forms.DateTimePicker dateDOB;
@@ -209,5 +227,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnUpdateBooking;
+        private System.Windows.Forms.TextBox txtCustomerID;
+        private System.Windows.Forms.Button btnDeleteCustomer;
     }
 }

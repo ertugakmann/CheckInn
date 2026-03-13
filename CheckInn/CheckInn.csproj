@@ -85,17 +85,17 @@
     <Compile Include="Forms\ReceptionistForms\ManageBookings\UpdateBookingForm.Designer.cs">
       <DependentUpon>UpdateBookingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ReceptionistForms\ManageCustomers\ManageBookings.cs">
+    <Compile Include="Forms\ReceptionistForms\ManageCustomers\ManageCustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ReceptionistForms\ManageCustomers\ManageBookings.Designer.cs">
-      <DependentUpon>ManageBookings.cs</DependentUpon>
+    <Compile Include="Forms\ReceptionistForms\ManageCustomers\ManageCustomerForm.Designer.cs">
+      <DependentUpon>ManageCustomerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ReceptionistForms\ManageCustomers\UpdateCustomers.cs">
+    <Compile Include="Forms\ReceptionistForms\ManageCustomers\UpdateCustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ReceptionistForms\ManageCustomers\UpdateCustomers.Designer.cs">
-      <DependentUpon>UpdateCustomers.cs</DependentUpon>
+    <Compile Include="Forms\ReceptionistForms\ManageCustomers\UpdateCustomerForm.Designer.cs">
+      <DependentUpon>UpdateCustomerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ReceptionistForms\ReceptionistForm.cs">
       <SubType>Form</SubType>
@@ -142,11 +142,11 @@
     <EmbeddedResource Include="Forms\ReceptionistForms\ManageBookings\UpdateBookingForm.resx">
       <DependentUpon>UpdateBookingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ReceptionistForms\ManageCustomers\ManageBookings.resx">
-      <DependentUpon>ManageBookings.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ReceptionistForms\ManageCustomers\ManageCustomerForm.resx">
+      <DependentUpon>ManageCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ReceptionistForms\ManageCustomers\UpdateCustomers.resx">
-      <DependentUpon>UpdateCustomers.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ReceptionistForms\ManageCustomers\UpdateCustomerForm.resx">
+      <DependentUpon>UpdateCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReceptionistForms\ReceptionistForm.resx">
       <DependentUpon>ReceptionistForm.cs</DependentUpon>

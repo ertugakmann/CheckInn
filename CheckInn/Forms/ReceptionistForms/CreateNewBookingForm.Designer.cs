@@ -54,6 +54,9 @@
             this.txtRoomPrice = new System.Windows.Forms.TextBox();
             this.txtTotalBookingFee = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.gridRoomBookings = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.gridRoomBookings)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbCustomer
@@ -78,7 +81,7 @@
             // 
             // dateBookingEndsDate
             // 
-            this.dateBookingEndsDate.Location = new System.Drawing.Point(770, 391);
+            this.dateBookingEndsDate.Location = new System.Drawing.Point(759, 392);
             this.dateBookingEndsDate.Name = "dateBookingEndsDate";
             this.dateBookingEndsDate.Size = new System.Drawing.Size(200, 20);
             this.dateBookingEndsDate.TabIndex = 65;
@@ -88,7 +91,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
             this.label9.ForeColor = System.Drawing.Color.Navy;
-            this.label9.Location = new System.Drawing.Point(527, 379);
+            this.label9.Location = new System.Drawing.Point(516, 380);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(184, 32);
             this.label9.TabIndex = 64;
@@ -96,7 +99,7 @@
             // 
             // dateBookingStarts
             // 
-            this.dateBookingStarts.Location = new System.Drawing.Point(770, 347);
+            this.dateBookingStarts.Location = new System.Drawing.Point(759, 348);
             this.dateBookingStarts.Name = "dateBookingStarts";
             this.dateBookingStarts.Size = new System.Drawing.Size(200, 20);
             this.dateBookingStarts.TabIndex = 63;
@@ -106,7 +109,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
             this.label8.ForeColor = System.Drawing.Color.Navy;
-            this.label8.Location = new System.Drawing.Point(527, 335);
+            this.label8.Location = new System.Drawing.Point(516, 336);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(195, 32);
             this.label8.TabIndex = 62;
@@ -305,11 +308,35 @@
             this.label10.TabIndex = 83;
             this.label10.Text = "Total Booking Fee :";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.label12.ForeColor = System.Drawing.Color.Navy;
+            this.label12.Location = new System.Drawing.Point(1199, 98);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(296, 32);
+            this.label12.TabIndex = 85;
+            this.label12.Text = "Selected Room Bookings";
+            // 
+            // gridRoomBookings
+            // 
+            this.gridRoomBookings.AllowUserToAddRows = false;
+            this.gridRoomBookings.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridRoomBookings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridRoomBookings.Location = new System.Drawing.Point(1016, 133);
+            this.gridRoomBookings.Name = "gridRoomBookings";
+            this.gridRoomBookings.ReadOnly = true;
+            this.gridRoomBookings.Size = new System.Drawing.Size(830, 279);
+            this.gridRoomBookings.TabIndex = 86;
+            // 
             // CreateNewBookingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1088, 583);
+            this.ClientSize = new System.Drawing.Size(1667, 703);
+            this.Controls.Add(this.gridRoomBookings);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.txtTotalBookingFee);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtRoomPrice);
@@ -339,6 +366,7 @@
             this.Name = "CreateNewBookingForm";
             this.Text = "CreateNewBookingForm";
             this.Load += new System.EventHandler(this.CreateNewBookingForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gridRoomBookings)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -372,5 +400,7 @@
         private System.Windows.Forms.TextBox txtRoomPrice;
         private System.Windows.Forms.TextBox txtTotalBookingFee;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DataGridView gridRoomBookings;
     }
 }

@@ -40,7 +40,6 @@ namespace CheckInn
             return rooms;
         }
 
-     
         public Room GetSelectedRoom(int roomID)
         {
             Room room = null;
@@ -70,22 +69,26 @@ namespace CheckInn
 
         public string GetRoomStatus(int roomID)
         {
-            List<Booking> roomBookings = bookingRepository.getSelectedRoomBookings(roomID);
+            string sql = @"SELECT COUNT(*) FROM tblBooking
+                   WHERE RoomID = ?
+                   AND BookingStatus = 'Active'
+                   AND BookingStartsDate <= Date()
+                   AND BookingEndsDate >= Date()";
 
-            DateTime today = DateTime.Today;
-
-            foreach (var booking in roomBookings)
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            using (OleDbCommand cmd = new OleDbCommand(sql, conn))
             {
-                if (today >= booking.BookingStartsDate.Date &&
-                    today <= booking.BookingEndsDate.Date)
-                {
+                cmd.Parameters.AddWithValue("@RoomID", roomID);
+
+                conn.Open();
+
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                if (count > 0)
                     return "Occupied";
-                }
+                else
+                    return "Available";
             }
-
-            return "Available";
         }
-
-
     }
 }

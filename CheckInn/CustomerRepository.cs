@@ -97,6 +97,66 @@ namespace CheckInn
         }
 
 
+        public void UpdateCustomer(Customer customer)
+        {
+            string sql = @"UPDATE tblCustomer 
+                   SET CustomerName = ?, 
+                       CustomerDOB = ?, 
+                       CustomerEmail = ?, 
+                       CustomerPhoneNumber = ?, 
+                       CustomerAddress = ?
+                   WHERE CustomerID = ?";
 
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("@Name", customer.CustomerName);
+                cmd.Parameters.AddWithValue("@DOB", customer.CustomerDOB);
+                cmd.Parameters.AddWithValue("@Email", customer.CustomerEmail);
+                cmd.Parameters.AddWithValue("@Phone", customer.CustomerPhoneNumber);
+                cmd.Parameters.AddWithValue("@Address", customer.CustomerAddress);
+                cmd.Parameters.AddWithValue("@CustomerID", customer.CustomerID);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public bool CustomerHasBookings(int customerID)
+        {
+            string sql = "SELECT * FROM tblBooking WHERE CustomerID = ?";
+
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("@CustomerID", customerID);
+
+                conn.Open();
+
+                using (OleDbDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        public void DeleteCustomer(int customerID)
+        {
+            string sql = "DELETE FROM tblCustomer WHERE CustomerID = ?";
+
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("@CustomerID", customerID);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

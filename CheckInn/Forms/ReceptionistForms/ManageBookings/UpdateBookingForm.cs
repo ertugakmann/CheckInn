@@ -72,6 +72,12 @@ namespace CheckInn.Forms.ReceptionistForms.ManageBookings
 
         private void btnUpdateBooking_Click(object sender, EventArgs e)
         {
+            if (dateBookingEndsDate.Value <= dateBookingStarts.Value)
+            {
+                MessageBox.Show("End date must be after start date");
+                return;
+            }
+
             booking.CustomerID = Convert.ToInt32(cmbCustomer.SelectedValue);
             booking.RoomID = Convert.ToInt32(cmbRoom.SelectedValue);
             booking.BookingStartsDate = dateBookingStarts.Value;
@@ -80,13 +86,21 @@ namespace CheckInn.Forms.ReceptionistForms.ManageBookings
 
             bookingRepository.UpdateBooking(booking);
 
-            if (dateBookingEndsDate.Value <= dateBookingStarts.Value)
-            {
-                MessageBox.Show("End date must be after start date");
-                return;
-            }
-
             MessageBox.Show("Booking updated successfully");
+
+            this.Close();
+        }
+
+        private void btnCancelBooking_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to cancel this booking?", "Confirm", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                bookingRepository.CancelBooking(booking.BookingID);
+            }
+          
+            MessageBox.Show("Booking cancelled successfully");
 
             this.Close();
         }

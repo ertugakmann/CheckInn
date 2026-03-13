@@ -1,6 +1,6 @@
 ﻿namespace CheckInn.Forms.ReceptionistForms.ManageCustomers
 {
-    partial class ManageBookings
+    partial class ManageCustomerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -38,29 +38,31 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Navy;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(12, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(308, 45);
-            this.label1.TabIndex = 71;
+            this.label1.TabIndex = 73;
             this.label1.Text = "Manage Customers";
             // 
             // dgvCustomers
             // 
             this.dgvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCustomers.Location = new System.Drawing.Point(12, 69);
+            this.dgvCustomers.Location = new System.Drawing.Point(12, 94);
             this.dgvCustomers.Name = "dgvCustomers";
             this.dgvCustomers.Size = new System.Drawing.Size(905, 431);
-            this.dgvCustomers.TabIndex = 70;
+            this.dgvCustomers.TabIndex = 72;
+            this.dgvCustomers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomers_CellDoubleClick);
             // 
-            // ManageBookings
+            // ManageCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(960, 543);
+            this.ClientSize = new System.Drawing.Size(934, 537);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvCustomers);
-            this.Name = "ManageBookings";
-            this.Text = "ManageBookings";
+            this.Name = "ManageCustomerForm";
+            this.Text = "ManageCustomers";
+            this.Load += new System.EventHandler(this.ManageCustomers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

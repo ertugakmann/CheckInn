@@ -42,9 +42,9 @@
             this.btnManageBookings = new System.Windows.Forms.Button();
             this.btnManageCustomer = new System.Windows.Forms.Button();
             this.groupBoxOverview = new System.Windows.Forms.GroupBox();
-            this.lblTotalRooms = new System.Windows.Forms.Label();
-            this.lblOccupiedRooms = new System.Windows.Forms.Label();
             this.lblAvailableRooms = new System.Windows.Forms.Label();
+            this.lblOccupiedRooms = new System.Windows.Forms.Label();
+            this.lblTotalRooms = new System.Windows.Forms.Label();
             this.groupBoxCheckIns = new System.Windows.Forms.GroupBox();
             this.gridCheckIns = new System.Windows.Forms.DataGridView();
             this.groupBoxCheckOuts = new System.Windows.Forms.GroupBox();
@@ -132,18 +132,18 @@
             // 
             // btnCreateCustomer
             // 
-            this.btnCreateCustomer.Location = new System.Drawing.Point(29, 345);
+            this.btnCreateCustomer.Location = new System.Drawing.Point(29, 341);
             this.btnCreateCustomer.Name = "btnCreateCustomer";
-            this.btnCreateCustomer.Size = new System.Drawing.Size(101, 23);
+            this.btnCreateCustomer.Size = new System.Drawing.Size(132, 31);
             this.btnCreateCustomer.TabIndex = 0;
             this.btnCreateCustomer.Text = "Create Customer";
             this.btnCreateCustomer.Click += new System.EventHandler(this.btnCreateCustomer_Click);
             // 
             // btnCreateBooking
             // 
-            this.btnCreateBooking.Location = new System.Drawing.Point(31, 462);
+            this.btnCreateBooking.Location = new System.Drawing.Point(29, 457);
             this.btnCreateBooking.Name = "btnCreateBooking";
-            this.btnCreateBooking.Size = new System.Drawing.Size(101, 23);
+            this.btnCreateBooking.Size = new System.Drawing.Size(132, 32);
             this.btnCreateBooking.TabIndex = 27;
             this.btnCreateBooking.Text = "Create Booking";
             this.btnCreateBooking.Click += new System.EventHandler(this.btnCreateBooking_Click);
@@ -161,18 +161,18 @@
             // 
             // btnManageBookings
             // 
-            this.btnManageBookings.Location = new System.Drawing.Point(153, 462);
+            this.btnManageBookings.Location = new System.Drawing.Point(218, 457);
             this.btnManageBookings.Name = "btnManageBookings";
-            this.btnManageBookings.Size = new System.Drawing.Size(115, 23);
+            this.btnManageBookings.Size = new System.Drawing.Size(146, 32);
             this.btnManageBookings.TabIndex = 29;
             this.btnManageBookings.Text = "Manage Bookings";
             this.btnManageBookings.Click += new System.EventHandler(this.btnManageBookings_Click);
             // 
             // btnManageCustomer
             // 
-            this.btnManageCustomer.Location = new System.Drawing.Point(153, 345);
+            this.btnManageCustomer.Location = new System.Drawing.Point(218, 341);
             this.btnManageCustomer.Name = "btnManageCustomer";
-            this.btnManageCustomer.Size = new System.Drawing.Size(115, 23);
+            this.btnManageCustomer.Size = new System.Drawing.Size(146, 31);
             this.btnManageCustomer.TabIndex = 30;
             this.btnManageCustomer.Text = "Manage Customers";
             this.btnManageCustomer.Click += new System.EventHandler(this.btnManageCustomer_Click);
@@ -189,32 +189,35 @@
             this.groupBoxOverview.TabStop = false;
             this.groupBoxOverview.Text = "Hotel Overview";
             // 
-            // lblTotalRooms
+            // lblAvailableRooms
             // 
-            this.lblTotalRooms.AutoSize = true;
-            this.lblTotalRooms.Location = new System.Drawing.Point(6, 16);
-            this.lblTotalRooms.Name = "lblTotalRooms";
-            this.lblTotalRooms.Size = new System.Drawing.Size(70, 13);
-            this.lblTotalRooms.TabIndex = 0;
-            this.lblTotalRooms.Text = "Total Rooms:";
+            this.lblAvailableRooms.AutoSize = true;
+            this.lblAvailableRooms.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblAvailableRooms.Location = new System.Drawing.Point(6, 63);
+            this.lblAvailableRooms.Name = "lblAvailableRooms";
+            this.lblAvailableRooms.Size = new System.Drawing.Size(126, 19);
+            this.lblAvailableRooms.TabIndex = 2;
+            this.lblAvailableRooms.Text = "Available Rooms:";
             // 
             // lblOccupiedRooms
             // 
             this.lblOccupiedRooms.AutoSize = true;
+            this.lblOccupiedRooms.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblOccupiedRooms.Location = new System.Drawing.Point(6, 39);
             this.lblOccupiedRooms.Name = "lblOccupiedRooms";
-            this.lblOccupiedRooms.Size = new System.Drawing.Size(92, 13);
+            this.lblOccupiedRooms.Size = new System.Drawing.Size(126, 19);
             this.lblOccupiedRooms.TabIndex = 1;
             this.lblOccupiedRooms.Text = "Occupied Rooms:";
             // 
-            // lblAvailableRooms
+            // lblTotalRooms
             // 
-            this.lblAvailableRooms.AutoSize = true;
-            this.lblAvailableRooms.Location = new System.Drawing.Point(6, 63);
-            this.lblAvailableRooms.Name = "lblAvailableRooms";
-            this.lblAvailableRooms.Size = new System.Drawing.Size(89, 13);
-            this.lblAvailableRooms.TabIndex = 2;
-            this.lblAvailableRooms.Text = "Available Rooms:";
+            this.lblTotalRooms.AutoSize = true;
+            this.lblTotalRooms.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblTotalRooms.Location = new System.Drawing.Point(6, 16);
+            this.lblTotalRooms.Name = "lblTotalRooms";
+            this.lblTotalRooms.Size = new System.Drawing.Size(96, 19);
+            this.lblTotalRooms.TabIndex = 0;
+            this.lblTotalRooms.Text = "Total Rooms:";
             // 
             // groupBoxCheckIns
             // 

@@ -55,10 +55,10 @@
       <DependentUpon>CheckInnDatabaseDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="CustomerRepository.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ReceptionistForms\CreateNewBookingForm.cs">
@@ -103,10 +103,34 @@
     <Compile Include="Forms\ReceptionistForms\ReceptionistForm.Designer.cs">
       <DependentUpon>ReceptionistForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ReceptionistForms\RoomForm.cs">
+    <Compile Include="Forms\ReceptionistForms\RoomForms\ManageRoomCharges\CreateRoomChargeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ReceptionistForms\RoomForm.Designer.cs">
+    <Compile Include="Forms\ReceptionistForms\RoomForms\ManageRoomCharges\CreateRoomChargeForm.Designer.cs">
+      <DependentUpon>CreateRoomChargeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReceptionistForms\RoomForms\ManageRoomCharges\UpdateRoomChargesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReceptionistForms\RoomForms\ManageRoomCharges\UpdateRoomChargesForm.Designer.cs">
+      <DependentUpon>UpdateRoomChargesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReceptionistForms\RoomForms\ManageRoomServiceRequests\CreateServiceRequestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReceptionistForms\RoomForms\ManageRoomServiceRequests\CreateServiceRequestForm.Designer.cs">
+      <DependentUpon>CreateServiceRequestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReceptionistForms\RoomForms\ManageRoomServiceRequests\UpdateServiceRequestsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReceptionistForms\RoomForms\ManageRoomServiceRequests\UpdateServiceRequestsForm.Designer.cs">
+      <DependentUpon>UpdateServiceRequestsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReceptionistForms\RoomForms\RoomForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReceptionistForms\RoomForms\RoomForm.Designer.cs">
       <DependentUpon>RoomForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Booking.cs" />
@@ -127,7 +151,7 @@
     </Compile>
     <Compile Include="RoomRepository.cs" />
     <Compile Include="StaffRepository.cs" />
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReceptionistForms\CreateNewBookingForm.resx">
@@ -151,7 +175,13 @@
     <EmbeddedResource Include="Forms\ReceptionistForms\ReceptionistForm.resx">
       <DependentUpon>ReceptionistForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ReceptionistForms\RoomForm.resx">
+    <EmbeddedResource Include="Forms\ReceptionistForms\RoomForms\ManageRoomCharges\CreateRoomChargeForm.resx">
+      <DependentUpon>CreateRoomChargeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReceptionistForms\RoomForms\ManageRoomServiceRequests\CreateServiceRequestForm.resx">
+      <DependentUpon>CreateServiceRequestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReceptionistForms\RoomForms\RoomForm.resx">
       <DependentUpon>RoomForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

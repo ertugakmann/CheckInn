@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CheckInn.Model
 {
-    internal class Room
+    public class Room
     {
         public int RoomID { get; set; }
         public string RoomType { get; set; }

@@ -41,10 +41,13 @@ namespace CheckInn.Forms
             // Get Booking Details if there is
             selectedRoomBookings = bookingRepository.GetAllBookings();
 
-
-
+            // CHANGE LABELS
             lblRoomNumber.Text = Convert.ToString(roomNumber);
-          
+
+            lblPricePerNight.Text = "Price Per Night: " + Convert.ToString(selectedRoom.PricePerNight);
+            lblRoomType.Text = "Room Type: " + selectedRoom.RoomType;
+            lblRoomStatus.Text = "Room Status: " + roomRepository.GetRoomStatus(selectedRoom.RoomID);
+
         }
 
         private void btnCreateRoomService_Click(object sender, EventArgs e)
@@ -57,6 +60,11 @@ namespace CheckInn.Forms
         {
             CreateRoomChargeForm createRoomChargeForm = new CreateRoomChargeForm();
             createRoomChargeForm.ShowDialog();
+        }
+
+        private void btnCheckIn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -46,12 +46,12 @@
             this.btnCreateBooking = new System.Windows.Forms.Button();
             this.groupBoxOverview = new System.Windows.Forms.GroupBox();
             this.lblRoomStatus = new System.Windows.Forms.Label();
-            this.lblOccupiedRooms = new System.Windows.Forms.Label();
+            this.lblRoomType = new System.Windows.Forms.Label();
             this.lblPricePerNight = new System.Windows.Forms.Label();
             this.btnGetReport = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnCheckOut = new System.Windows.Forms.Button();
+            this.btnCheckIn = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -204,11 +204,11 @@
             // groupBoxOverview
             // 
             this.groupBoxOverview.Controls.Add(this.lblRoomStatus);
-            this.groupBoxOverview.Controls.Add(this.lblOccupiedRooms);
+            this.groupBoxOverview.Controls.Add(this.lblRoomType);
             this.groupBoxOverview.Controls.Add(this.lblPricePerNight);
             this.groupBoxOverview.Location = new System.Drawing.Point(35, 160);
             this.groupBoxOverview.Name = "groupBoxOverview";
-            this.groupBoxOverview.Size = new System.Drawing.Size(165, 89);
+            this.groupBoxOverview.Size = new System.Drawing.Size(268, 89);
             this.groupBoxOverview.TabIndex = 54;
             this.groupBoxOverview.TabStop = false;
             this.groupBoxOverview.Text = "Room Overview";
@@ -223,15 +223,15 @@
             this.lblRoomStatus.TabIndex = 2;
             this.lblRoomStatus.Text = "Room Status:";
             // 
-            // lblOccupiedRooms
+            // lblRoomType
             // 
-            this.lblOccupiedRooms.AutoSize = true;
-            this.lblOccupiedRooms.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblOccupiedRooms.Location = new System.Drawing.Point(6, 39);
-            this.lblOccupiedRooms.Name = "lblOccupiedRooms";
-            this.lblOccupiedRooms.Size = new System.Drawing.Size(142, 21);
-            this.lblOccupiedRooms.TabIndex = 1;
-            this.lblOccupiedRooms.Text = "Occupied Rooms:";
+            this.lblRoomType.AutoSize = true;
+            this.lblRoomType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblRoomType.Location = new System.Drawing.Point(6, 39);
+            this.lblRoomType.Name = "lblRoomType";
+            this.lblRoomType.Size = new System.Drawing.Size(99, 21);
+            this.lblRoomType.TabIndex = 1;
+            this.lblRoomType.Text = "Room Type:";
             // 
             // lblPricePerNight
             // 
@@ -263,23 +263,24 @@
             this.label2.TabIndex = 56;
             this.label2.Text = "Get Statistics Report of the Room";
             // 
-            // button1
+            // btnCheckOut
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(35, 371);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(132, 32);
-            this.button1.TabIndex = 59;
-            this.button1.Text = "Check Out";
+            this.btnCheckOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCheckOut.Location = new System.Drawing.Point(35, 371);
+            this.btnCheckOut.Name = "btnCheckOut";
+            this.btnCheckOut.Size = new System.Drawing.Size(132, 32);
+            this.btnCheckOut.TabIndex = 59;
+            this.btnCheckOut.Text = "Check Out";
             // 
-            // button2
+            // btnCheckIn
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(35, 333);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(132, 32);
-            this.button2.TabIndex = 57;
-            this.button2.Text = "Check In";
+            this.btnCheckIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCheckIn.Location = new System.Drawing.Point(35, 333);
+            this.btnCheckIn.Name = "btnCheckIn";
+            this.btnCheckIn.Size = new System.Drawing.Size(132, 32);
+            this.btnCheckIn.TabIndex = 57;
+            this.btnCheckIn.Text = "Check In";
+            this.btnCheckIn.Click += new System.EventHandler(this.btnCheckIn_Click);
             // 
             // label5
             // 
@@ -405,8 +406,8 @@
             this.Controls.Add(this.btnCreateRoomService);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnCheckOut);
+            this.Controls.Add(this.btnCheckIn);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnGetReport);
             this.Controls.Add(this.label2);
@@ -460,10 +461,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBoxOverview;
         private System.Windows.Forms.Label lblRoomStatus;
-        private System.Windows.Forms.Label lblOccupiedRooms;
+        private System.Windows.Forms.Label lblRoomType;
         private System.Windows.Forms.Label lblPricePerNight;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnCheckOut;
+        private System.Windows.Forms.Button btnCheckIn;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label8;

@@ -63,6 +63,8 @@
             this.btnCreateRoomCharges = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.lblCheckInDate = new System.Windows.Forms.Label();
+            this.lblCheckOutDate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkInnDatabaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblRoomBindingSource)).BeginInit();
@@ -200,15 +202,18 @@
             this.btnCreateBooking.Size = new System.Drawing.Size(132, 32);
             this.btnCreateBooking.TabIndex = 51;
             this.btnCreateBooking.Text = "Create Booking";
+            this.btnCreateBooking.Click += new System.EventHandler(this.btnCreateBooking_Click);
             // 
             // groupBoxOverview
             // 
+            this.groupBoxOverview.Controls.Add(this.lblCheckOutDate);
+            this.groupBoxOverview.Controls.Add(this.lblCheckInDate);
             this.groupBoxOverview.Controls.Add(this.lblRoomStatus);
             this.groupBoxOverview.Controls.Add(this.lblRoomType);
             this.groupBoxOverview.Controls.Add(this.lblPricePerNight);
-            this.groupBoxOverview.Location = new System.Drawing.Point(35, 160);
+            this.groupBoxOverview.Location = new System.Drawing.Point(35, 135);
             this.groupBoxOverview.Name = "groupBoxOverview";
-            this.groupBoxOverview.Size = new System.Drawing.Size(268, 89);
+            this.groupBoxOverview.Size = new System.Drawing.Size(268, 143);
             this.groupBoxOverview.TabIndex = 54;
             this.groupBoxOverview.TabStop = false;
             this.groupBoxOverview.Text = "Room Overview";
@@ -271,6 +276,7 @@
             this.btnCheckOut.Size = new System.Drawing.Size(132, 32);
             this.btnCheckOut.TabIndex = 59;
             this.btnCheckOut.Text = "Check Out";
+            this.btnCheckOut.Click += new System.EventHandler(this.btnCheckOut_Click);
             // 
             // btnCheckIn
             // 
@@ -287,7 +293,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Navy;
-            this.label5.Location = new System.Drawing.Point(27, 276);
+            this.label5.Location = new System.Drawing.Point(27, 281);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(226, 45);
             this.label5.TabIndex = 58;
@@ -393,6 +399,26 @@
             this.label6.TabIndex = 106;
             this.label6.Text = "Double Click to Manage Room Charges";
             // 
+            // lblCheckInDate
+            // 
+            this.lblCheckInDate.AutoSize = true;
+            this.lblCheckInDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblCheckInDate.Location = new System.Drawing.Point(6, 94);
+            this.lblCheckInDate.Name = "lblCheckInDate";
+            this.lblCheckInDate.Size = new System.Drawing.Size(98, 21);
+            this.lblCheckInDate.TabIndex = 3;
+            this.lblCheckInDate.Text = "Checked In:";
+            // 
+            // lblCheckOutDate
+            // 
+            this.lblCheckOutDate.AutoSize = true;
+            this.lblCheckOutDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblCheckOutDate.Location = new System.Drawing.Point(6, 115);
+            this.lblCheckOutDate.Name = "lblCheckOutDate";
+            this.lblCheckOutDate.Size = new System.Drawing.Size(111, 21);
+            this.lblCheckOutDate.TabIndex = 4;
+            this.lblCheckOutDate.Text = "Checked Out:";
+            // 
             // RoomForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -476,5 +502,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblCheckOutDate;
+        private System.Windows.Forms.Label lblCheckInDate;
     }
 }

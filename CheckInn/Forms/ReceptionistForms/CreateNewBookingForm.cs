@@ -16,16 +16,23 @@ namespace CheckInn.Forms.ReceptionistForms
         CustomerRepository customerRepository = new CustomerRepository();
         BookingRepository bookingRepository = new BookingRepository();
         RoomRepository roomRepository = new RoomRepository();
+        private int preSelectedRoomID;
 
         public CreateNewBookingForm()
         {
             InitializeComponent();
+            preSelectedRoomID = -1;
+        }
+
+        public CreateNewBookingForm(int roomID)
+        {
+            InitializeComponent();
+            preSelectedRoomID = roomID;
         }
 
         private void CreateNewBookingForm_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
-
 
             // Customers
             List<Customer> customers = customerRepository.GetAllCustomers();
@@ -40,6 +47,9 @@ namespace CheckInn.Forms.ReceptionistForms
             cmbRoom.DataSource = rooms;
             cmbRoom.DisplayMember = "DisplayText";
             cmbRoom.ValueMember = "RoomID";
+
+            // Pre-select the room AFTER DataSource is set
+            cmbRoom.SelectedValue = preSelectedRoomID;
 
             // Show Room Bookings
             gridRoomBookings.AutoGenerateColumns = false;

@@ -179,7 +179,27 @@ namespace CheckInn
             }
         }
 
-        
+        public string GetCustomerNameByBookingID(int bookingID)
+        {
+            string sql = @"SELECT tblCustomer.CustomerName 
+                   FROM (tblBooking 
+                   INNER JOIN tblCustomer 
+                   ON tblBooking.CustomerID = tblCustomer.CustomerID)
+                   WHERE tblBooking.BookingID = ?";
+
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("@BookingID", bookingID);
+
+                conn.Open();
+
+                object result = cmd.ExecuteScalar();
+
+                return result != null ? result.ToString() : "Unknown";
+            }
+        }
+
         public int GetTotalRooms()
         {
             string sql = "SELECT COUNT(*) FROM tblRoom";
@@ -253,6 +273,42 @@ namespace CheckInn
             }
 
             return table;
+        }
+
+        public void CheckIn(int bookingID, int roomID)
+        {
+            string sql = "UPDATE tblBooking SET BookingStatus = 'CheckedIn', CheckInDate = ? WHERE BookingID = ?";
+
+            OleDbConnection conn = new OleDbConnection(connectionString);
+            OleDbCommand cmd = new OleDbCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@CheckInDate", DateTime.Now.Date);
+            cmd.Parameters.AddWithValue("@BookingID", bookingID);
+
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+            RoomRepository roomRepository = new RoomRepository();
+            roomRepository.SetRoomStatus(roomID, "Occupied");
+        }
+
+        public void CheckOut(int bookingID, int roomID)
+        {
+            string sql = "UPDATE tblBooking SET BookingStatus = 'Finished', CheckOutDate = ? WHERE BookingID = ?";
+
+            OleDbConnection conn = new OleDbConnection(connectionString);
+            OleDbCommand cmd = new OleDbCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@CheckOutDate", DateTime.Now.Date);
+            cmd.Parameters.AddWithValue("@BookingID", bookingID);
+
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+            RoomRepository roomRepository = new RoomRepository();
+            roomRepository.SetRoomStatus(roomID, "Available");
         }
     }
 }

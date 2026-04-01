@@ -37,7 +37,7 @@ namespace CheckInn.Forms.ReceptionistForms.ManageBookings
             List<Room> rooms = roomRepository.getAllRooms();
 
             cmbRoom.DataSource = rooms;
-            cmbRoom.DisplayMember = "RoomType";
+            cmbRoom.DisplayMember = "RoomID";
             cmbRoom.ValueMember = "RoomID";
 
             dateBookingStarts.Value = booking.BookingStartsDate;

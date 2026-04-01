@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -140,10 +140,13 @@
       <DependentUpon>RoomForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Booking.cs" />
+    <Compile Include="ChargeRepository.cs" />
     <Compile Include="Model\Cleaning.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Payment.cs" />
     <Compile Include="Model\Room.cs" />
+    <Compile Include="Model\RoomCharge.cs" />
+    <Compile Include="Model\RoomService.cs" />
     <Compile Include="Model\Service.cs" />
     <Compile Include="Model\Staff.cs" />
     <Compile Include="Model\StaffRole.cs" />
@@ -156,6 +159,7 @@
       <DependentUpon>RoomCard.cs</DependentUpon>
     </Compile>
     <Compile Include="RoomRepository.cs" />
+    <Compile Include="ServiceRepository.cs" />
     <Compile Include="StaffRepository.cs" />
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -187,8 +191,14 @@
     <EmbeddedResource Include="Forms\ReceptionistForms\RoomForms\ManageRoomCharges\CreateRoomChargeForm.resx">
       <DependentUpon>CreateRoomChargeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReceptionistForms\RoomForms\ManageRoomCharges\UpdateRoomChargesForm.resx">
+      <DependentUpon>UpdateRoomChargesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReceptionistForms\RoomForms\ManageRoomServiceRequests\CreateServiceRequestForm.resx">
       <DependentUpon>CreateServiceRequestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReceptionistForms\RoomForms\ManageRoomServiceRequests\UpdateServiceRequestsForm.resx">
+      <DependentUpon>UpdateServiceRequestsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReceptionistForms\RoomForms\RoomForm.resx">
       <DependentUpon>RoomForm.cs</DependentUpon>
